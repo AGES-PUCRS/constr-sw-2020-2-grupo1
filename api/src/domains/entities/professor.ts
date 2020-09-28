@@ -5,6 +5,7 @@ class Professor {
     email: String
     idProfessor: Number
     numTelefone: String
+    turmas?: Turma[]
 
     constructor(nome: String,
         cdMatricula: String,
@@ -12,6 +13,7 @@ class Professor {
         email: String,
         idProfessor: Number,
         numTelefone: String,
+        turmas: Turma[] = []
         ) {
             this.nome = nome
             this.cdMatricula = cdMatricula

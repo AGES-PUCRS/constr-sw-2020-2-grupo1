@@ -1,9 +1,12 @@
 import ProfessorRepository from "../repositories/professorRepository"
+import TurmaService from "./turmaService"
 
 export default class ProfessorService {
     professorRepository
+    turmaService
     constructor() {
         this.professorRepository = new ProfessorRepository()
+        this.turmaService = new TurmaService()
     }
 
     get(): Promise<Professor[]> {
