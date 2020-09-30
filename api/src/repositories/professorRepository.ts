@@ -4,9 +4,9 @@ import professorModel from "../domains/models/professorModel";
 
 export default class ProfessorRepository {
     
-    // get(): Promise<Professor[]> {
-        
-    // }
+    async get(): Promise<Document[]> {
+        return await professorModel.find()
+    }
 
     // getById(id: String): Promise<Professor> {
 

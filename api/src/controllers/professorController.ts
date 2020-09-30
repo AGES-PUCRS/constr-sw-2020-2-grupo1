@@ -10,11 +10,13 @@ export default class ProfessorController {
         this.professorService = new ProfessorService()
 
         this.save = this.save.bind(this)
+        this.get = this.get.bind(this)
     }
 
-    // get(req: Request, res: Response, next: NextFunction): Promise<Professor[]> {
-
-    // }
+    async get(req: Request, res: Response, next: NextFunction): Promise<any> {
+        const professores = await this.professorService.get()
+        return res.status(200).send(professores)
+    }
 
     // getById(req: Request, res: Response, next: NextFunction): Promise<Professor> {
 

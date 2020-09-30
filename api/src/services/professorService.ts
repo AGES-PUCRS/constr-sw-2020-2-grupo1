@@ -11,11 +11,12 @@ export default class ProfessorService {
         // this.turmaService = new TurmaService()
 
         this.save = this.save.bind(this)
+        this.get = this.get.bind(this)
     }
 
-    // get(): Promise<Professor[]> {
-
-    // }
+    async get(): Promise<Document[]> {
+        return await this.professorRepository.get()
+    }
 
     // getById(id: String): Promise<Professor> {
 
