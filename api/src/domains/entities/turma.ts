@@ -1,4 +1,4 @@
-class Turma {
+export default class Turma {
     disciplina: Disciplina
     numeroAlunos: String
     curso: String

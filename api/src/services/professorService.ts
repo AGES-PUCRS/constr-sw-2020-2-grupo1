@@ -1,31 +1,35 @@
+import { Document } from "mongoose"
+import Professor from "../domains/entities/professor"
 import ProfessorRepository from "../repositories/professorRepository"
 import TurmaService from "./turmaService"
 
 export default class ProfessorService {
-    professorRepository
-    turmaService
+    professorRepository: ProfessorRepository
+    // turmaService: TurmaService
     constructor() {
         this.professorRepository = new ProfessorRepository()
-        this.turmaService = new TurmaService()
+        // this.turmaService = new TurmaService()
+
+        this.save = this.save.bind(this)
     }
 
-    get(): Promise<Professor[]> {
+    // get(): Promise<Professor[]> {
 
+    // }
+
+    // getById(id: String): Promise<Professor> {
+
+    // }
+
+    async save(professor: Professor): Promise<Document> {
+        return await this.professorRepository.save(professor)
     }
 
-    getById(id: String): Promise<Professor> {
+    // update(professor: Professor): Promise<void> {
 
-    }
+    // }
 
-    save(professor: Professor): Promise<Professor> {
+    // delete(id: String): Promise<void> {
 
-    }
-
-    update(professor: Professor): Promise<void> {
-
-    }
-
-    delete(id: String): Promise<void> {
-
-    }
+    // }
 }

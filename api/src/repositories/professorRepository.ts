@@ -1,22 +1,26 @@
+import { Document } from "mongoose";
+import Professor from "../domains/entities/professor";
+import professorModel from "../domains/models/professorModel";
+
 export default class ProfessorRepository {
     
-    get(): Promise<Professor[]> {
+    // get(): Promise<Professor[]> {
         
+    // }
+
+    // getById(id: String): Promise<Professor> {
+
+    // }
+
+    async save(professor: Professor): Promise<Document> {
+        return await professorModel.create(professor) 
     }
 
-    getById(id: String): Promise<Professor> {
+    // update(professor: Professor): Promise<void> {
 
-    }
+    // }
 
-    save(professor: Professor): Promise<Professor> {
+    // delete(id: String): Promise<void> {
 
-    }
-
-    update(professor: Professor): Promise<void> {
-
-    }
-
-    delete(id: String): Promise<void> {
-
-    }
+    // }
 }

@@ -1,26 +1,27 @@
-class Professor {
+export default class Professor {
     nome: String
     cdMatricula: String
     escola: String
     email: String
-    idProfessor: Number
+    // idProfessor: Number
     numTelefone: String
-    turmas?: Turma[]
+    // turmas?: Turma[]
 
     constructor(nome: String,
         cdMatricula: String,
         escola: String,
         email: String,
-        idProfessor: Number,
+        // idProfessor: Number,
         numTelefone: String,
-        turmas: Turma[] = []
+        // turmas: Turma[] = []
         ) {
             this.nome = nome
             this.cdMatricula = cdMatricula
             this.escola = escola
             this.email = email
             this.numTelefone = numTelefone
-            this.idProfessor = idProfessor
+            // this.idProfessor = idProfessor
+            // this.turmas = turmas
     }
 
 }
