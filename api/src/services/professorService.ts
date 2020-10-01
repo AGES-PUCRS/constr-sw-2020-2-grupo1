@@ -1,5 +1,6 @@
 import { Document } from "mongoose"
 import Professor from "../domains/entities/professor"
+import { IProfessor } from "../domains/models/professorModel"
 import ProfessorRepository from "../repositories/professorRepository"
 import TurmaService from "./turmaService"
 
@@ -12,9 +13,10 @@ export default class ProfessorService {
 
         this.save = this.save.bind(this)
         this.get = this.get.bind(this)
+        this.update = this.update.bind(this)
     }
 
-    async get(): Promise<Document[]> {
+    async get(): Promise<IProfessor[]> {
         return await this.professorRepository.get()
     }
 
@@ -22,13 +24,13 @@ export default class ProfessorService {
 
     // }
 
-    async save(professor: Professor): Promise<Document> {
+    async save(professor: Professor): Promise<IProfessor> {
         return await this.professorRepository.save(professor)
     }
 
-    // update(professor: Professor): Promise<void> {
-
-    // }
+    async update(id: String, professor: Professor): Promise<void> {
+        return await this.professorRepository.update(id, professor)
+    }
 
     // delete(id: String): Promise<void> {
 

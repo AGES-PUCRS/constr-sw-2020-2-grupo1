@@ -1,10 +1,10 @@
 import { Document } from "mongoose";
 import Professor from "../domains/entities/professor";
-import professorModel from "../domains/models/professorModel";
+import professorModel, { IProfessor } from "../domains/models/professorModel";
 
 export default class ProfessorRepository {
-    
-    async get(): Promise<Document[]> {
+
+    async get(): Promise<IProfessor[]> {
         return await professorModel.find()
     }
 
@@ -12,13 +12,13 @@ export default class ProfessorRepository {
 
     // }
 
-    async save(professor: Professor): Promise<Document> {
-        return await professorModel.create(professor) 
+    async save(professor: Professor): Promise<IProfessor> {
+        return await professorModel.create(professor)
     }
 
-    // update(professor: Professor): Promise<void> {
-
-    // }
+    async update(id: String, professor: Professor): Promise<void> {
+        return await professorModel.update({ _id: id }, professor)
+    }
 
     // delete(id: String): Promise<void> {
 

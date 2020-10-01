@@ -8,6 +8,16 @@ export interface IProfessor extends mongoose.Document {
     numTelefone: String,
   };
 
+// const professorSchema = new mongoose.Schema({
+//     nome: String,
+//     cdMatricula: String,
+//     escola: String,
+//     email: String,
+//     numTelefone: String,
+//     // turmas?: Turma[],
+// }, {
+//     _id: true
+// })
 const professorSchema = new mongoose.Schema({
     nome: String,
     cdMatricula: String,
