@@ -20,7 +20,7 @@ export default class ProfessorRepository {
         return await professorModel.update({ _id: id }, professor)
     }
 
-    // delete(id: String): Promise<void> {
-
-    // }
+    async delete(id: String): Promise<any> {
+        return await professorModel.findByIdAndDelete({ _id: id })
+    }
 }

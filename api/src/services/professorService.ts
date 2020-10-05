@@ -14,6 +14,7 @@ export default class ProfessorService {
         this.save = this.save.bind(this)
         this.get = this.get.bind(this)
         this.update = this.update.bind(this)
+        this.delete = this.delete.bind(this)
     }
 
     async get(): Promise<IProfessor[]> {
@@ -32,7 +33,7 @@ export default class ProfessorService {
         return await this.professorRepository.update(id, professor)
     }
 
-    // delete(id: String): Promise<void> {
-
-    // }
+    async delete(id: String): Promise<void> {
+        return await this.professorRepository.delete(id)
+    }
 }

@@ -12,6 +12,7 @@ export default class ProfessorController {
         this.save = this.save.bind(this)
         this.get = this.get.bind(this)
         this.update = this.update.bind(this)
+        this.delete = this.delete.bind(this)
     }
 
     async get(req: Request, res: Response, next: NextFunction): Promise<any> {
@@ -40,7 +41,10 @@ export default class ProfessorController {
         return res.status(204).send()
     }
 
-    // delete(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async delete(req: Request, res: Response, next: NextFunction): Promise<any> {
+        const { id } = req.params
+        await this.professorService.delete(id)
 
-    // }
+        return res.status(204).send()
+    }
 }
