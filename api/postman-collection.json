@@ -1,1 +1,170 @@
-{"_type":"export","__export_format":4,"__export_date":"2020-10-05T23:22:02.045Z","__export_source":"insomnia.desktop.app:v2020.3.3","resources":[{"_id":"req_691cf2b9160d43f6b40ebb2b4a438fd8","authentication":{},"body":{"mimeType":"","text":"{\r\n    \"nome\": \"Alessandra\",\r\n    \"cdMatricula\": \"123456789\",\r\n    \"escola\": \"Politécnica\",\r\n    \"email\": \"email@email.com\",\r\n    \"numTelefone\": \"123456789\"\r\n}"},"created":1601938976612,"description":"","headers":[{"name":"Content-Type","value":"application/json"}],"isPrivate":false,"metaSortKey":-1601938976612,"method":"POST","modified":1601938976612,"name":"CREATE PROFESSOR","parameters":[],"parentId":"fld_6d7341a5ccc345078110a26955726f62","settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingFollowRedirects":"global","settingRebuildPath":true,"settingSendCookies":true,"settingStoreCookies":true,"url":"http://localhost:3333/professores","_type":"request"},{"_id":"fld_6d7341a5ccc345078110a26955726f62","created":1601938979762,"description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1601938979763,"modified":1601938979762,"name":"construcao-software","parentId":"wrk_1ae7d4bb42d249e3b6c2955128056f3c","_type":"request_group"},{"_id":"wrk_1ae7d4bb42d249e3b6c2955128056f3c","created":1601938979747,"description":"","modified":1601938979747,"name":"Imported Workspace","parentId":null,"scope":null,"_type":"workspace"},{"_id":"req_38e8b03c646746019e9e09058d3581b5","authentication":{},"body":{},"created":1601938976607,"description":"","headers":[],"isPrivate":false,"metaSortKey":-1601938976607,"method":"GET","modified":1601938976607,"name":"GET PROFESSORES","parameters":[],"parentId":"fld_6d7341a5ccc345078110a26955726f62","settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingFollowRedirects":"global","settingRebuildPath":true,"settingSendCookies":true,"settingStoreCookies":true,"url":"http://localhost:3333/professores","_type":"request"},{"_id":"req_930c1c8451f3485f90263eb30b36a754","authentication":{},"body":{"mimeType":"","text":"{\r\n        \"_id\": \"5f75145aeecafa4500beb40a\",\r\n        \"nome\": \"Ana Paula Atualizada\",\r\n        \"cdMatricula\": \"0205040487\",\r\n        \"escola\": \"Politécnica\",\r\n        \"email\": \"aninha@email.com\",\r\n        \"numTelefone\": \"123456789\"\r\n    }"},"created":1601938976556,"description":"","headers":[{"name":"Content-Type","value":"application/json"}],"isPrivate":false,"metaSortKey":-1601938976556,"method":"PUT","modified":1601938976556,"name":"UPDATE PROFESSOR","parameters":[],"parentId":"fld_6d7341a5ccc345078110a26955726f62","settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingFollowRedirects":"global","settingRebuildPath":true,"settingSendCookies":true,"settingStoreCookies":true,"url":"http://localhost:3333/professores/5f75145aeecafa4500beb40a","_type":"request"},{"_id":"req_9415a623460a4471b2e38384e4660ff9","authentication":{},"body":{},"created":1601939509247,"description":"","headers":[],"isPrivate":false,"metaSortKey":-1601938976506,"method":"DELETE","modified":1601939716212,"name":"DELETE PROFESSOR","parameters":[],"parentId":"fld_6d7341a5ccc345078110a26955726f62","settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingFollowRedirects":"global","settingRebuildPath":true,"settingSendCookies":true,"settingStoreCookies":true,"url":"http://localhost:3333/professores/5f7ba583a66079ef37efa41a","_type":"request"},{"_id":"env_0a43a694a119817339e80c5b0d0a1b6ebd13e76a","color":null,"created":1601939006934,"data":{},"dataPropertyOrder":null,"isPrivate":false,"metaSortKey":1601939006934,"modified":1601939006934,"name":"Base Environment","parentId":"wrk_1ae7d4bb42d249e3b6c2955128056f3c","_type":"environment"},{"_id":"jar_0a43a694a119817339e80c5b0d0a1b6ebd13e76a","cookies":[],"created":1601939006938,"modified":1601939006938,"name":"Default Jar","parentId":"wrk_1ae7d4bb42d249e3b6c2955128056f3c","_type":"cookie_jar"},{"_id":"spc_40e1f7b214ae4ed6917930b36432e251","contentType":"yaml","contents":"","created":1601938979749,"fileName":"Imported Workspace","modified":1601938979749,"parentId":"wrk_1ae7d4bb42d249e3b6c2955128056f3c","_type":"api_spec"}]}
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2020-10-05T23:22:02.045Z",
+    "__export_source": "insomnia.desktop.app:v2020.3.3",
+    "resources": [
+        {
+            "_id": "req_691cf2b9160d43f6b40ebb2b4a438fd8",
+            "authentication": {},
+            "body": {
+                "mimeType": "",
+                "text": "{\r\n    \"nome\": \"Alessandra\",\r\n    \"cdMatricula\": \"123456789\",\r\n    \"escola\": \"Politécnica\",\r\n    \"email\": \"email@email.com\",\r\n    \"numTelefone\": \"123456789\"\r\n}"
+            },
+            "created": 1601938976612,
+            "description": "",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "isPrivate": false,
+            "metaSortKey": -1601938976612,
+            "method": "POST",
+            "modified": 1601938976612,
+            "name": "CREATE PROFESSOR",
+            "parameters": [],
+            "parentId": "fld_6d7341a5ccc345078110a26955726f62",
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingFollowRedirects": "global",
+            "settingRebuildPath": true,
+            "settingSendCookies": true,
+            "settingStoreCookies": true,
+            "url": "http://localhost:3333/professores",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_6d7341a5ccc345078110a26955726f62",
+            "created": 1601938979762,
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1601938979763,
+            "modified": 1601938979762,
+            "name": "construcao-software",
+            "parentId": "wrk_1ae7d4bb42d249e3b6c2955128056f3c",
+            "_type": "request_group"
+        },
+        {
+            "_id": "wrk_1ae7d4bb42d249e3b6c2955128056f3c",
+            "created": 1601938979747,
+            "description": "",
+            "modified": 1601938979747,
+            "name": "Imported Workspace",
+            "parentId": null,
+            "scope": null,
+            "_type": "workspace"
+        },
+        {
+            "_id": "req_38e8b03c646746019e9e09058d3581b5",
+            "authentication": {},
+            "body": {},
+            "created": 1601938976607,
+            "description": "",
+            "headers": [],
+            "isPrivate": false,
+            "metaSortKey": -1601938976607,
+            "method": "GET",
+            "modified": 1601938976607,
+            "name": "GET PROFESSORES",
+            "parameters": [],
+            "parentId": "fld_6d7341a5ccc345078110a26955726f62",
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingFollowRedirects": "global",
+            "settingRebuildPath": true,
+            "settingSendCookies": true,
+            "settingStoreCookies": true,
+            "url": "http://localhost:3333/professores",
+            "_type": "request"
+        },
+        {
+            "_id": "req_930c1c8451f3485f90263eb30b36a754",
+            "authentication": {},
+            "body": {
+                "mimeType": "",
+                "text": "{\r\n        \"_id\": \"5f75145aeecafa4500beb40a\",\r\n        \"nome\": \"Ana Paula Atualizada\",\r\n        \"cdMatricula\": \"0205040487\",\r\n        \"escola\": \"Politécnica\",\r\n        \"email\": \"aninha@email.com\",\r\n        \"numTelefone\": \"123456789\"\r\n    }"
+            },
+            "created": 1601938976556,
+            "description": "",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "isPrivate": false,
+            "metaSortKey": -1601938976556,
+            "method": "PUT",
+            "modified": 1601938976556,
+            "name": "UPDATE PROFESSOR",
+            "parameters": [],
+            "parentId": "fld_6d7341a5ccc345078110a26955726f62",
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingFollowRedirects": "global",
+            "settingRebuildPath": true,
+            "settingSendCookies": true,
+            "settingStoreCookies": true,
+            "url": "http://localhost:3333/professores/5f75145aeecafa4500beb40a",
+            "_type": "request"
+        },
+        {
+            "_id": "req_9415a623460a4471b2e38384e4660ff9",
+            "authentication": {},
+            "body": {},
+            "created": 1601939509247,
+            "description": "",
+            "headers": [],
+            "isPrivate": false,
+            "metaSortKey": -1601938976506,
+            "method": "DELETE",
+            "modified": 1601939716212,
+            "name": "DELETE PROFESSOR",
+            "parameters": [],
+            "parentId": "fld_6d7341a5ccc345078110a26955726f62",
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingFollowRedirects": "global",
+            "settingRebuildPath": true,
+            "settingSendCookies": true,
+            "settingStoreCookies": true,
+            "url": "http://localhost:3333/professores/5f7ba583a66079ef37efa41a",
+            "_type": "request"
+        },
+        {
+            "_id": "env_0a43a694a119817339e80c5b0d0a1b6ebd13e76a",
+            "color": null,
+            "created": 1601939006934,
+            "data": {},
+            "dataPropertyOrder": null,
+            "isPrivate": false,
+            "metaSortKey": 1601939006934,
+            "modified": 1601939006934,
+            "name": "Base Environment",
+            "parentId": "wrk_1ae7d4bb42d249e3b6c2955128056f3c",
+            "_type": "environment"
+        },
+        {
+            "_id": "jar_0a43a694a119817339e80c5b0d0a1b6ebd13e76a",
+            "cookies": [],
+            "created": 1601939006938,
+            "modified": 1601939006938,
+            "name": "Default Jar",
+            "parentId": "wrk_1ae7d4bb42d249e3b6c2955128056f3c",
+            "_type": "cookie_jar"
+        },
+        {
+            "_id": "spc_40e1f7b214ae4ed6917930b36432e251",
+            "contentType": "yaml",
+            "contents": "",
+            "created": 1601938979749,
+            "fileName": "Imported Workspace",
+            "modified": 1601938979749,
+            "parentId": "wrk_1ae7d4bb42d249e3b6c2955128056f3c",
+            "_type": "api_spec"
+        }
+    ]
+}
