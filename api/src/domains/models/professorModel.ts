@@ -1,30 +1,19 @@
 import mongoose from 'mongoose'
 
 export interface IProfessor extends mongoose.Document {
-    nome: String,
-    cdMatricula: String,
-    escola: String,
-    email: String,
-    numTelefone: String,
-  };
+    nome: string,
+    cdMatricula: string,
+    escola: string,
+    email: string,
+    numTelefone: string,
+};
 
-// const professorSchema = new mongoose.Schema({
-//     nome: String,
-//     cdMatricula: String,
-//     escola: String,
-//     email: String,
-//     numTelefone: String,
-//     // turmas?: Turma[],
-// }, {
-//     _id: true
-// })
 const professorSchema = new mongoose.Schema({
     nome: String,
     cdMatricula: String,
     escola: String,
     email: String,
-    numTelefone: String,
-    // turmas?: Turma[],
+    numTelefone: String
 }, {
     _id: true
 })

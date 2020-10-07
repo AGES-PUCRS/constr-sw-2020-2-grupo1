@@ -7,10 +7,10 @@ export default class ProfessorRepository {
     async get(): Promise<IProfessor[]> {
         return await professorModel.find()
     }
-
-    // getById(id: String): Promise<Professor> {
-
-    // }
+    
+    async getById(id: String): Promise<IProfessor | null> {
+        return await professorModel.findOne({_id: id})
+    }
 
     async save(professor: Professor): Promise<IProfessor> {
         return await professorModel.create(professor)

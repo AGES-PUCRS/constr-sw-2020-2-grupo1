@@ -1,4 +1,4 @@
-class Disciplina {
+export default class Disciplina {
     codigoDisciplina: String
     nomeDisciplina: String
 

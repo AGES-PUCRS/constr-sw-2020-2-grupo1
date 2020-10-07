@@ -1,19 +1,21 @@
+import Disciplina from "./disciplina"
+
 export default class Turma {
     disciplina: Disciplina
-    numeroAlunos: String
-    curso: String
-    horario: String 
+    numeroAlunos: number
+    curso: string
+    horario: string
 
     constructor(
-        numeroAlunos: String,
-        curso: String,
+        numeroAlunos: number,
+        curso: string,
         disciplina: Disciplina,
-        horario: String
-        ) {
-            this.numeroAlunos = numeroAlunos
-            this.curso = curso
-            this.disciplina = disciplina
-            this.horario = horario
+        horario: string
+    ) {
+        this.numeroAlunos = numeroAlunos
+        this.curso = curso
+        this.disciplina = disciplina
+        this.horario = horario
     }
 
 }
