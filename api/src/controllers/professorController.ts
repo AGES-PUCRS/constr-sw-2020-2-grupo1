@@ -11,13 +11,15 @@ export default class ProfessorController {
 
         this.save = this.save.bind(this)
         this.get = this.get.bind(this)
-        this.update = this.update.bind(this)
+        this.replace = this.replace.bind(this)
+        this.updateMerge = this.updateMerge.bind(this)
         this.delete = this.delete.bind(this)
         this.getById = this.getById.bind(this)
     }
 
     async get(req: Request, res: Response, next: NextFunction): Promise<any> {
         const professores = await this.professorService.get()
+        
         return res.status(200).send(professores)
     }
 
@@ -35,11 +37,21 @@ export default class ProfessorController {
         return res.status(201).send(savedProfessor)
     }
 
-    async update(req: Request, res: Response, next: NextFunction): Promise<any> {
-        const { nome, cdMatricula, escola, email, numTelefone } = req.body
+    async replace(req: Request, res: Response, next: NextFunction): Promise<any> {
+        const { nome, cdMatricula, escola, email, numTelefone, isAtivo } = req.body
         const { id } = req.params
-        const professor = new Professor(nome, cdMatricula, escola, email, numTelefone)
-        await this.professorService.update(id, professor)
+
+        const professor = new Professor(nome, cdMatricula, escola, email, numTelefone, id, isAtivo)
+        await this.professorService.replace(professor)
+
+        return res.status(204).send()
+    }
+
+    async updateMerge(req: Request, res: Response, next: NextFunction): Promise<any> {
+        const { body: professor }: { body: Professor } = req
+        const { id } = req.params
+        professor.id = id
+        await this.professorService.updateMerge(professor)
 
         return res.status(204).send()
     }

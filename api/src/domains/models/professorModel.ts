@@ -6,6 +6,7 @@ export interface IProfessor extends mongoose.Document {
     escola: string,
     email: string,
     numTelefone: string,
+    isAtivo?: Boolean,
 };
 
 const professorSchema = new mongoose.Schema({
@@ -13,7 +14,12 @@ const professorSchema = new mongoose.Schema({
     cdMatricula: String,
     escola: String,
     email: String,
-    numTelefone: String
+    numTelefone: String,
+    isAtivo: {
+        type: Boolean,
+        required: false,
+        default: true,
+    },
 }, {
     _id: true
 })

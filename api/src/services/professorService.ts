@@ -13,7 +13,8 @@ export default class ProfessorService {
 
         this.save = this.save.bind(this)
         this.get = this.get.bind(this)
-        this.update = this.update.bind(this)
+        this.replace = this.replace.bind(this)
+        this.updateMerge = this.updateMerge.bind(this)
         this.delete = this.delete.bind(this)
         this.getById = this.getById.bind(this)
     }
@@ -37,8 +38,12 @@ export default class ProfessorService {
         return await this.professorRepository.save(professor)
     }
 
-    async update(id: String, professor: Professor): Promise<void> {
-        return await this.professorRepository.update(id, professor)
+    async replace(professor: Professor): Promise<void> {
+        return await this.professorRepository.replace(professor)
+    }
+
+    async updateMerge(professor: Professor): Promise<void> {
+        return await this.professorRepository.updateMerge(professor)
     }
 
     async delete(id: String): Promise<void> {
