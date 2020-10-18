@@ -1,8 +1,10 @@
 import { Document } from "mongoose"
 import Professor, { fromIProfessor } from "../domains/entities/professor"
+import HttpException from "../domains/exceptions/httpException"
 import { IProfessor } from "../domains/models/professorModel"
 import ProfessorRepository from "../repositories/professorRepository"
 import TurmaService from "./turmaService"
+import {NOT_FOUND} from 'http-status'
 
 export default class ProfessorService {
     professorRepository: ProfessorRepository
@@ -23,7 +25,7 @@ export default class ProfessorService {
         return await this.professorRepository.get()
     }
 
-    async getById(id: String): Promise<Professor | null> {
+    async getById(id: string): Promise<Professor | null> {
         const iprofessor: IProfessor | null = await this.professorRepository.getById(id)
 
         if (iprofessor) {
@@ -31,7 +33,7 @@ export default class ProfessorService {
             return fromIProfessor(iprofessor, turmas)
         }
 
-        return null
+        throw new HttpException(NOT_FOUND, "Professor não encontrado")
     }
 
     async save(professor: Professor): Promise<IProfessor> {

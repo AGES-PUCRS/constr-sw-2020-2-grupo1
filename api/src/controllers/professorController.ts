@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-import { Document } from "mongoose";
 import ProfessorService from "../services/professorService";
 import Professor from '../domains/entities/professor'
 

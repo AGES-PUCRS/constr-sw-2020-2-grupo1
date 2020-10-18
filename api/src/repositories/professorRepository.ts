@@ -7,7 +7,7 @@ export default class ProfessorRepository {
         return await professorModel.find({ isAtivo: true })
     }
 
-    async getById(id: String): Promise<IProfessor | null> {
+    async getById(id: string): Promise<IProfessor | null> {
         return await professorModel.findOne({ _id: id, isAtivo: true })
     }
 
