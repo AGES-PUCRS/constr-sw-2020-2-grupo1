@@ -8,7 +8,7 @@ export default class TurmaService {
         this.serviceUrl = ""
     }
 
-    async getByIdProfessor(): Promise<Turma[]> {
+    async getByIdProfessor(id :string): Promise<Turma[]> {
         const disciplina = new Disciplina("123456", "Construção de Software")
 
         const turmas = [

@@ -17,8 +17,8 @@ export default class ProfessorController {
     }
 
     async get(req: Request, res: Response, next: NextFunction): Promise<any> {
-        const { name } = req.query
-        const professores = await this.professorService.get(name as string)
+        const { name, expand } = req.query
+        const professores = await this.professorService.get(name as string, expand as string)
 
         return res.status(200).send(professores)
     }

@@ -32,6 +32,6 @@ export default class Professor {
     }
 }
 
-export function fromIProfessor(iprofessor: IProfessor, turmas: Turma[]): Professor {
+export function fromIProfessor(iprofessor: IProfessor, turmas?: Turma[]): Professor {
     return new Professor(iprofessor.nome, iprofessor.cdMatricula, iprofessor.escola, iprofessor.email, iprofessor.numTelefone, iprofessor.id, iprofessor.isAtivo, turmas)
 }
