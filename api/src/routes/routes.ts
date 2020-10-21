@@ -19,7 +19,61 @@ const professorController = new ProfessorController()
  *          type: string
  *      numTelefone:
  *          type: string
+ *
+ *
+ *
+ *  ProfessorResponse:
+ *   type: object
+ *   properties:
+ *      nome:
+ *          type: string
+ *      escola:
+ *          type: string
+ *      email:
+ *          type: string
+ *      numTelefone:
+ *          type: string
+ *      isAtivo:
+ *          type: boolean
+ *      _id:
+ *          type: string
+ *
+ *  ProfessorIDResponse:
+ *   type: object
+ *   properties:
+ *      nome:
+ *          type: string
+ *      escola:
+ *          type: string
+ *      email:
+ *          type: string
+ *      numTelefone:
+ *          type: string
+ *      isAtivo:
+ *          type: boolean
+ *      _id:
+ *          type: string
+ *      turmas:
+    *       type: array
+    *       items:
+    *          type: object
+    *          properties: 
+    *              numeroAlunos: 
+    *                  type: number
+    *              curso: 
+    *                  type: string
+    *              disciplina:
+    *                  type: object
+    *                  properties:
+    *                      codigoDisciplina:
+    *                          type: number
+    *                      nomeDisciplina: 
+    *                          type: string
+    *              horario:
+    *                  type: string
+ *                
  */
+
 
 /**
  * @swagger
@@ -35,6 +89,10 @@ const professorController = new ProfessorController()
  *      responses:
  *          200: 
  *              description: Sucesso
+ *              schema: 
+ *                  type: array
+ *                  items:
+ *                      $ref: '#/definitions/ProfessorResponse'
  *          500:
  *              description: Erro interno
  */
@@ -54,6 +112,8 @@ routes.get('/professores', professorController.get)
  *      responses:
  *          200: 
  *              description: Sucesso
+ *              schema: 
+ *                  $ref: '#/definitions/ProfessorIDResponse'
  *          404:
  *              description: Professor não encontrado
  *          500:
@@ -93,6 +153,8 @@ routes.delete('/professores/:id', professorController.delete)
  *      responses:
  *          201: 
  *              description: Sucesso
+ *              schema:
+ *                  $ref: '#/definitions/ProfessorResponse'
  *          500:
  *              description: Erro interno
  */
