@@ -4,7 +4,7 @@ import HttpException from "../domains/exceptions/httpException"
 import { IProfessor } from "../domains/models/professorModel"
 import ProfessorRepository from "../repositories/professorRepository"
 import TurmaService from "./turmaService"
-import {NOT_FOUND} from 'http-status'
+import { NOT_FOUND } from 'http-status'
 
 export default class ProfessorService {
     professorRepository: ProfessorRepository
@@ -21,8 +21,8 @@ export default class ProfessorService {
         this.getById = this.getById.bind(this)
     }
 
-    async get(): Promise<IProfessor[]> {
-        return await this.professorRepository.get()
+    async get(name: string): Promise<IProfessor[]> {
+        return await this.professorRepository.get(name)
     }
 
     async getById(id: string): Promise<Professor | null> {

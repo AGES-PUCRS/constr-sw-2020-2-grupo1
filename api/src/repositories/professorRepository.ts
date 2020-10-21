@@ -3,8 +3,17 @@ import professorModel, { IProfessor } from "../domains/models/professorModel";
 
 export default class ProfessorRepository {
 
-    async get(): Promise<IProfessor[]> {
-        return await professorModel.find({ isAtivo: true })
+    async get(name: string): Promise<IProfessor[]> {
+        let filtro
+
+        if (name) {
+            const nameRegex = new RegExp(".*" + name + ".*", "i")
+            filtro = { isAtivo: true, nome: nameRegex }
+        } else {
+            filtro = { isAtivo: true }
+        }
+
+        return await professorModel.find(filtro)
     }
 
     async getById(id: string): Promise<IProfessor | null> {

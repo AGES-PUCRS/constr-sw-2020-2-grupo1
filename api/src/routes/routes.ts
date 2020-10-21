@@ -26,6 +26,12 @@ const professorController = new ProfessorController()
  * /professores:
  *  get:
  *      description: Esta rota deve retornar todos os professores do sistema
+ *      parameters:
+ *        - in: query
+ *          name: name
+ *          required: false
+ *          type: string
+ *          description: Filtro opcional na busca de professores
  *      responses:
  *          200: 
  *              description: Sucesso
