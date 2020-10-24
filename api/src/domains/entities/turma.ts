@@ -1,21 +1,21 @@
 import Disciplina from "./disciplina"
 
 export default class Turma {
-    disciplina: Disciplina
+    // disciplina: Disciplina
     numeroAlunos: number
-    curso: string
-    horario: string
+    horarios: string[]
+    numero: number
 
     constructor(
+        numero: number,
         numeroAlunos: number,
-        curso: string,
-        disciplina: Disciplina,
-        horario: string
+        // disciplina: Disciplina,
+        horarios: string[]
     ) {
+        this.numero = numero
         this.numeroAlunos = numeroAlunos
-        this.curso = curso
-        this.disciplina = disciplina
-        this.horario = horario
+        // this.disciplina = disciplina
+        this.horarios = horarios
     }
 
 }
