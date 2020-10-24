@@ -86,6 +86,12 @@ const professorController = new ProfessorController()
  *          required: false
  *          type: string
  *          description: Filtro opcional na busca de professores
+ *        - in: query
+ *          name: expand
+ *          required: false
+ *          type: string
+ *          description: Atributo a ser populado dentro de um professor
+ *          enum: [turma]
  *      responses:
  *          200: 
  *              description: Sucesso
@@ -109,6 +115,12 @@ routes.get('/professores', professorController.get)
  *          required: true
  *          type: string
  *          description: Identificador do professor buscado
+ *        - in: query
+ *          name: expand
+ *          required: false
+ *          type: string
+ *          description: Atributo a ser populado dentro de um professor
+ *          enum: [turma]
  *      responses:
  *          200: 
  *              description: Sucesso
@@ -120,6 +132,35 @@ routes.get('/professores', professorController.get)
  *              description: Erro interno
  */
 routes.get('/professores/:id', professorController.getById)
+
+/**
+ * @swagger
+ * /professores/by-cd-matricula/{cdMatricula}:
+ *  get:
+ *      description: Esta rota deve retornar todos os dados de um professor que tenha o código de matrícula passado
+ *      parameters:
+ *        - in: path
+ *          name: cdMatricula
+ *          required: true
+ *          type: string
+ *          description: Código de matrícula do professor buscado
+ *        - in: query
+ *          name: expand
+ *          required: false
+ *          type: string
+ *          description: Atributo a ser populado dentro de um professor.
+ *          enum: [turma]
+ *      responses:
+ *          200: 
+ *              description: Sucesso
+ *              schema: 
+ *                  $ref: '#/definitions/ProfessorIDResponse'
+ *          404:
+ *              description: Professor não encontrado
+ *          500:
+ *              description: Erro interno
+ */
+routes.get('/professores/by-cd-matricula/:cdMatricula', professorController.getByCdMatricula)
 
 /**
  * @swagger

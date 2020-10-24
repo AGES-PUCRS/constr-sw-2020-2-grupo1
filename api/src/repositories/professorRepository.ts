@@ -20,6 +20,10 @@ export default class ProfessorRepository {
         return await professorModel.findOne({ _id: id, isAtivo: true })
     }
 
+    async getByCdMatricula(cdMatricula: string): Promise<IProfessor | null> {
+        return await professorModel.findOne({ cdMatricula: cdMatricula, isAtivo: true })
+    }
+
     async save(professor: Professor): Promise<IProfessor> {
         return await professorModel.create(professor)
     }

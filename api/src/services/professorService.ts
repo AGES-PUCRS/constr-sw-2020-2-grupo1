@@ -19,35 +19,53 @@ export default class ProfessorService {
         this.updateMerge = this.updateMerge.bind(this)
         this.delete = this.delete.bind(this)
         this.getById = this.getById.bind(this)
+        this.getByCdMatricula = this.getByCdMatricula.bind(this)
     }
 
-    async _populaTurmas(iprofessor: IProfessor) : Promise<Professor> {
+    private async _populaTurmas(iprofessor: IProfessor): Promise<Professor> {
         const turmas = await this.turmaService.getByIdProfessor(iprofessor.id)
         return fromIProfessor(iprofessor, turmas)
+    }
+
+    private async _handleExpandTurmaByProfessorArray(iprofessores: IProfessor[], expand: string): Promise<Professor[]> {
+        const chamadas: Promise<Professor>[] = []
+
+        iprofessores.forEach(iprof => {
+            chamadas.push(this._handleExpandTurmaByProfessor(iprof, expand))
+        })
+
+        return await Promise.all(chamadas)
+    }
+
+    private async _handleExpandTurmaByProfessor(iprofessor: IProfessor, expand: string): Promise<Professor> {
+        if (expand == "turma") {
+            return await this._populaTurmas(iprofessor)
+        }
+
+        return fromIProfessor(iprofessor)
     }
 
     async get(name: string, expand: string): Promise<Professor[]> {
         const professoresEncontrados = await this.professorRepository.get(name)
 
-        if (expand == "turma") {
-            const chamadas: Promise<Professor>[] = []
-
-            professoresEncontrados.forEach(async iprof => {
-                chamadas.push(this._populaTurmas(iprof))
-            })
-
-            return await Promise.all(chamadas)
-        }
-
-        return professoresEncontrados.map(iprof => fromIProfessor(iprof))
+        return await this._handleExpandTurmaByProfessorArray(professoresEncontrados, expand)
     }
 
-    async getById(id: string): Promise<Professor | null> {
+    async getById(id: string, expand: string): Promise<Professor | null> {
         const iprofessor: IProfessor | null = await this.professorRepository.getById(id)
 
         if (iprofessor) {
-            const turmas = await this.turmaService.getByIdProfessor(id)
-            return fromIProfessor(iprofessor, turmas)
+            return await this._handleExpandTurmaByProfessor(iprofessor, expand)
+        }
+
+        throw new HttpException(NOT_FOUND, "Professor não encontrado")
+    }
+
+    async getByCdMatricula(cdMatricula: string, expand: string): Promise<Professor | null> {
+        const iprofessor: IProfessor | null = await this.professorRepository.getByCdMatricula(cdMatricula)
+
+        if (iprofessor) {
+            return await this._handleExpandTurmaByProfessor(iprofessor, expand)
         }
 
         throw new HttpException(NOT_FOUND, "Professor não encontrado")

@@ -14,6 +14,7 @@ export default class ProfessorController {
         this.updateMerge = this.updateMerge.bind(this)
         this.delete = this.delete.bind(this)
         this.getById = this.getById.bind(this)
+        this.getByCdMatricula = this.getByCdMatricula.bind(this)
     }
 
     async get(req: Request, res: Response, next: NextFunction): Promise<any> {
@@ -25,7 +26,15 @@ export default class ProfessorController {
 
     async getById(req: Request, res: Response, next: NextFunction): Promise<any> {
         const { id } = req.params
-        const professor = await this.professorService.getById(id)
+        const { expand } = req.query
+        const professor = await this.professorService.getById(id, expand as string)
+        return res.status(200).send(professor)
+    }
+
+    async getByCdMatricula(req: Request, res: Response, next: NextFunction): Promise<any> {
+        const { cdMatricula } = req.params
+        const { expand } = req.query
+        const professor = await this.professorService.getByCdMatricula(cdMatricula, expand as string)
         return res.status(200).send(professor)
     }
 
