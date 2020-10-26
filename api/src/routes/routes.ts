@@ -203,7 +203,7 @@ routes.post('/professores', professorController.save)
 
 /**
  * @swagger
- * /professores:
+ * /professores/{id}:
  *  put:
  *      description: Esta rota irá atualizar um professor do sistema
  *      parameters:
@@ -226,7 +226,7 @@ routes.put('/professores/:id', professorController.replace)
 
 /**
  * @swagger
- * /professores:
+ * /professores/{id}:
  *  patch:
  *      description: Esta rota irá atualizar um professor do sistema
  *      parameters:
