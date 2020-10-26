@@ -1,16 +1,6 @@
 import Turma from "../domains/entities/turma";
 import Axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-
-interface ApiTurmaObject {
-    horario: string[]
-    alunos: string[]
-    _id: string
-    numero: number
-    ano: number
-    semestre: number
-    sala: any
-    disciplina: any
-}
+import { ApiTurmaObject } from "../domains/models/apiTurmaModel";
 
 export default class TurmaService {
     turmaApi: AxiosInstance
@@ -23,11 +13,7 @@ export default class TurmaService {
     }
 
     async getByIdProfessor(id: string): Promise<Turma[]> {
-
-        const response = await this.turmaApi.get("turma")
-
-        // Chamada correta
-        // const response = await this.turmaApi.get(`turma/${id}`)
+        const response = await this.turmaApi.get(`turma/${id}`)
 
         const turmas = response.data.map((turma: ApiTurmaObject) => {
             return new Turma(turma.numero, turma.alunos.length, turma.horario)
