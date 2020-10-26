@@ -19,6 +19,8 @@ const professorController = new ProfessorController()
  *          type: string
  *      numTelefone:
  *          type: string
+ *      cdMatricula:
+ *          type: string
  *
  *
  *
