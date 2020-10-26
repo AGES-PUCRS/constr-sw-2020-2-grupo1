@@ -13,7 +13,7 @@ export default class TurmaService {
     }
 
     async getByIdProfessor(id: string): Promise<Turma[]> {
-        const response = await this.turmaApi.get(`turma/${id}`)
+        const response = await this.turmaApi.get(`turma?professor=${id}`)
 
         const turmas = response.data.map((turma: ApiTurmaObject) => {
             return new Turma(turma.numero, turma.alunos.length, turma.horario)
