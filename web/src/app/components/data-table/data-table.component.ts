@@ -1,57 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-
-interface Turma {
-  codigo: string,
-  disciplina: string,
-  professor: string,
-  semestre: string,
-  sala: number
-}
-
-const turmas = [
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-]
+import { Component, Inject, OnInit } from '@angular/core';
+import { Turma } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.scss']
+  styleUrls: ['./data-table.component.scss'],
+  inputs: ['turmas']
 })
 
 export class DataTableComponent implements OnInit {
 
-  dataSource: Turma[] = turmas
-  displayedColumns: string[] = ['codigo', 'disciplina', 'professor', 'semestre', 'sala'];
+  @Inject("turmas")
+  turmas: Turma[]
+  displayedColumns: string[] = ['avatar', 'codigo', 'disciplina', 'professor', 'semestre', 'sala', 'actions'];
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 }

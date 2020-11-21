@@ -1,29 +1,48 @@
-<table class="app-data-table" mat-table [dataSource]="dataSource">
+<table class="app-data-table mat-elevation-z8" mat-table [dataSource]="turmas">
+  <ng-container matColumnDef="avatar">
+    <th mat-header-cell *matHeaderCellDef> </th>
+    <td class="table-item-cell" mat-cell *matCellDef="let element">
+      <img matListAvatar src="../../../assets/group-icon.png" alt="Turma">
+    </td>
+  </ng-container>
+
   <ng-container matColumnDef="codigo">
     <th mat-header-cell *matHeaderCellDef> Código </th>
-    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+    <td class="table-item-cell" mat-cell *matCellDef="let element"> {{element.codigo}} </td>
   </ng-container>
 
   <ng-container matColumnDef="disciplina">
     <th mat-header-cell *matHeaderCellDef> Disciplina </th>
-    <td mat-cell *matCellDef="let element"> {{element.disciplina}} </td>
+    <td class="table-item-cell" mat-cell *matCellDef="let element"> {{element.disciplina}} </td>
   </ng-container>
 
   <ng-container matColumnDef="professor">
     <th mat-header-cell *matHeaderCellDef> Professor </th>
-    <td mat-cell *matCellDef="let element"> {{element.professor}} </td>
+    <td class="table-item-cell" mat-cell *matCellDef="let element"> {{element.professor}} </td>
   </ng-container>
 
   <ng-container matColumnDef="semestre">
     <th mat-header-cell *matHeaderCellDef> Semestre </th>
-    <td mat-cell *matCellDef="let element"> {{element.semestre}} </td>
+    <td class="table-item-cell" mat-cell *matCellDef="let element"> {{element.semestre}} </td>
   </ng-container>
 
   <ng-container matColumnDef="sala">
     <th mat-header-cell *matHeaderCellDef> Sala </th>
-    <td mat-cell *matCellDef="let element"> {{element.sala}} </td>
+    <td class="table-item-cell" mat-cell *matCellDef="let element"> {{element.sala}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> </th>
+    <td class="table-item-cell -actions" mat-cell *matCellDef="let element">
+      <button mat-button class="action-button -edit">
+        <mat-icon aria-hidden="false">edit</mat-icon>
+      </button>
+      <button mat-button class="action-button -delete">
+        <mat-icon aria-hidden="false">delete</mat-icon>
+      </button>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr class="table-item-wrapper" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

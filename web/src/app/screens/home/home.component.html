@@ -1,4 +1,8 @@
 <section class="home-page">
   <h1 class="page-title">Exibição de turmas</h1>
-  <app-data-table></app-data-table>
+  <app-data-table class="table" [turmas]="turmas">
+  </app-data-table>
+  <button mat-fab class="add-class-button">
+    <mat-icon aria-hidden="false">add</mat-icon>
+  </button>
 </section>

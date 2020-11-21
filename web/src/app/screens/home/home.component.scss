@@ -1,4 +1,6 @@
 .home-page {
+  position: relative;
+
   padding: 50px;
   display: flex;
   flex-direction: column;
@@ -6,9 +8,20 @@
 
   .page-title {
     font-size: 50px;
-    font-family: 'Exo 2', sans-serif;
+    font-family: "Exo 2", sans-serif;
     color: rgb(65, 65, 77);
 
     margin-bottom: 60px;
+  }
+
+  .table {
+    width: 100%;
+  }
+
+  .add-class-button {
+    right: 70px;
+    bottom: 70px;
+    left: auto;
+    position: absolute;
   }
 }
