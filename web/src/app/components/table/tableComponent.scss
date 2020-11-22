@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+  text-align: center;
+  ::ng-deep .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  td {
+    padding: 10pt;
+  }
+  .action-button {
+    width: 1pt;
+  }
+  .edit {
+    color: #41414d;
+  }
+  .delete {
+    color: #41414d;
+  }
+}

@@ -1,0 +1,20 @@
+<div class="content">
+  <div class="title">
+    <div class="page-title">
+      <h1>Turmas</h1>
+      <mat-form-field>
+        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filtrar">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="mat-elevation-z2 table">
+    <tableComponent [dataSource]="dataSource"></tableComponent>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+  </div>
+
+  <button mat-fab class="add-class-button">
+    <mat-icon aria-hidden="false">add</mat-icon>
+  </button>
+
+</div>

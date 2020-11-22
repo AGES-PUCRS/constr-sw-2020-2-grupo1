@@ -1,0 +1,39 @@
+<div class="content">
+  <div class="title">
+    <div class="page-title">
+      <h1>Detalhes da Turma</h1>
+    </div>
+  </div>
+
+  <form  class="mat-elevation-z2 form" [formGroup]="loginForm" ngClick="onSubmit()">
+
+      <mat-form-field>
+        <mat-label>Código</mat-label>
+        <input matInput placeholder="4T45-02" formControlName="codigo" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Disciplina</mat-label>
+        <input matInput placeholder="Construção de Software" formControlName="disciplina" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Professor</mat-label>
+        <input matInput placeholder="Eduardo Arruda" formControlName="professor" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Semestre</mat-label>
+        <input matInput placeholder="2020/2" formControlName="semestre" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Sala</mat-label>
+        <input  matInput placeholder="215" formControlName="sala" required>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Salvar</button>
+
+  </form >
+
+</div>

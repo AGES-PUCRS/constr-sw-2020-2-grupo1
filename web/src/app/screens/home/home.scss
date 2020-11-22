@@ -1,0 +1,47 @@
+.content {
+  padding: 60pt;
+
+  display: flex;
+  flex-direction: column;
+
+  .page-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60pt;
+    h1 {
+      font-size: 40pt;
+      align-self: flex-end;
+      margin-bottom: 0;
+      line-height: 1;
+      color: rgb(65, 65, 77);
+      font-weight: 500;
+    }
+    mat-form-field {
+      font-size: 15pt;
+      border: 0;
+      width: 400pt;
+      color: rgb(65, 65, 77);
+      ::ng-deep .mat-form-field-wrapper {
+        margin-bottom: -1.2em;
+      }
+    }
+  }
+
+  .table {
+    padding: 30pt;
+    width: auto;
+    border-radius: 5pt;
+    background-color: #ffffff;
+    .mat-paginator {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .add-class-button {
+    right: 70px;
+    bottom: 70px;
+    left: auto;
+    position: absolute;
+    background-color: #80cbc4;
+  }
+}
