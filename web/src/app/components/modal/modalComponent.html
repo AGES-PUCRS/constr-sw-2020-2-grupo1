@@ -1,0 +1,71 @@
+<h2 mat-dialog-title>Detalhes da Turma</h2>
+<mat-dialog-content class="mat-typography">
+    <form  [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+        <mat-form-field>
+          
+          <mat-label>Código</mat-label>
+          <input matInput placeholder="4T45-02" formControlName="codigo" required>
+          <mat-error *ngIf="form.hasError('required')">
+            Preenchimento obrigatório
+          </mat-error>
+        </mat-form-field>
+  
+ 
+          <mat-form-field>
+            <mat-label>Disciplina</mat-label>
+            <input matInput placeholder="Construção de Software" formControlName="disciplina" required>
+            <mat-error *ngIf="form.hasError('required')">
+              Preenchimento obrigatório
+            </mat-error>
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Professor</mat-label>
+            <input matInput placeholder="Eduardo Arruda" formControlName="professor" required>
+            <mat-error *ngIf="form.hasError('required')">
+              Preenchimento obrigatório
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Ano</mat-label>
+            <input matInput placeholder="2019" formControlName="ano" required>
+            <mat-error *ngIf="form.hasError('required')">
+              Preenchimento obrigatório
+            </mat-error>
+          </mat-form-field>
+        
+  
+        <mat-form-field>
+          <mat-label>Semestre</mat-label>
+          <input matInput placeholder="2020/2" formControlName="semestre" required>
+          <mat-error *ngIf="form.hasError('required')">
+            Preenchimento obrigatório
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Sala</mat-label>
+          <input  matInput placeholder="215" formControlName="sala" required>
+          <mat-error *ngIf="form.hasError('required')">
+            Preenchimento obrigatório
+          </mat-error>
+        </mat-form-field>
+
+
+
+        <!-- <mat-selection-list #aulas>
+          <mat-list-option *ngFor="let aula of ">
+            {{aula}}
+          </mat-list-option>
+        </mat-selection-list> -->
+  
+    </form >
+  
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" mat-stroked-button mat-dialog-close>Cancelar</button>
+  <button mat-button color="primary" [disabled]="!form.valid" mat-raised-button (click)="onSubmit()" cdkFocusInitial>Salvar</button>
+</mat-dialog-actions>

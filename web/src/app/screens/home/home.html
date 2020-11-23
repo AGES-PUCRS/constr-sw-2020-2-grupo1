@@ -9,11 +9,11 @@
   </div>
 
   <div class="mat-elevation-z2 table">
-    <tableComponent [dataSource]="dataSource"></tableComponent>
+    <tableComponent (refresh)="refresh()" [dataSource]="dataSource"></tableComponent>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
   </div>
 
-  <button mat-fab class="add-class-button">
+  <button color='primary' (click)="openNew()" mat-fab class="add-class-button">
     <mat-icon aria-hidden="false">add</mat-icon>
   </button>
 

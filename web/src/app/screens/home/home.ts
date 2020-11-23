@@ -1,9 +1,11 @@
-import { AfterViewInit, Component, Inject, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Turma } from 'src/app/types';
+import { ModalComponent } from '../../components/modal/modalComponent';
+import { TurmaService } from 'src/app/services/turmaService';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Turma } from 'src/app/types';
 import { MatSort } from '@angular/material/sort';
-import { TurmaService } from 'src/app/services/turmaService';
+import { MatDialog } from '@angular/material/dialog';
 
 /**
  * @title Table with pagination
@@ -21,114 +23,45 @@ export class Home implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private turmaService: TurmaService) { }
+  constructor(
+    private turmaService: TurmaService,
+    public dialog: MatDialog
+    ) { }
 
-  ngOnInit() {
-    this.getClasses()
+
+  openNew() {
+   
+    let dialogRef = this.dialog.open(ModalComponent, {
+      data: { 
+        id: 'new', 
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) this.getClasses();
+    });
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    this.getClasses()
   }
 
   async getClasses() {
     const classes = await this.turmaService.getAll()
     this.dataSource = new MatTableDataSource(classes)
+    this.dataSource.paginator = this.paginator;
   }
 
   public doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
+  refresh(data: string) {
+    this.getClasses()
+    // window.location.reload();
+  }
+
 }
 
 
 
-
-const ELEMENT_DATA: Turma[] = [
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-  {
-    codigo: "4T45-02",
-    disciplina: "Construção de Software",
-    professor: "Eduardo Arruda",
-    semestre: "2020/2",
-    sala: 215,
-  },
-]
-
-
-
-
-
-/**  Copyright 2020 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license */
