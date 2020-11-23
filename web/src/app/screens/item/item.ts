@@ -8,25 +8,51 @@ import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 })
 
 export class Item implements AfterViewInit {
-  
+
+
   ngAfterViewInit() {
-    
   }
 
-  loginForm = new FormGroup ({
-    codigo: new FormControl('', [Validators.required]),
-    disciplina: new FormControl('', [Validators.required]),
-    professor: new FormControl('', [Validators.required]),
-    semestre: new FormControl('', [Validators.required]),
-    sala: new FormControl('', [Validators.required]),
-    
-  })
+  profileForm : FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.initForm();
+  }
+
+  initForm() {
+    this.profileForm = this.fb.group({
+      codigo : '',
+      disciplina  : '',
+      professor : '',
+      semestre : '',
+      sala : '',
+    }, {
+      validator: this.validator,
+    })
+  }
+
+
+  validator(form: FormGroup) {
+    const condition = form.get('semestre').value =='' ||
+    form.get('codigo').value =='' ||
+    form.get('disciplina').value ==''||
+    form.get('sala').value =='' ||
+    form.get('professor').value =='';
+
+    return condition ? { required: true} : null;
+  }
 
   
 
   onSubmit() {
-    event.preventDefault
-    console.log('teste');
+    if (this.profileForm.hasError('required')) alert("É preciso preencher todos os campos")
+    else 
+
+    console.warn(this.profileForm.value);
   }
 
+  
+
 }
+
+

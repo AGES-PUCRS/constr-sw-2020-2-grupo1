@@ -40,6 +40,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
   ],
   providers: [],
-  bootstrap: [Item]
+  bootstrap: [Home]
 })
 export class AppModule { }
