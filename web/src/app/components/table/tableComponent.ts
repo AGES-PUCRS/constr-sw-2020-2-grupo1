@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Inject} from '@angular/core';
-import { Turma } from 'src/app/interfaces';
+import { Turma } from 'src/app/types';
 
 @Component({
   selector: 'tableComponent',
@@ -9,11 +9,11 @@ import { Turma } from 'src/app/interfaces';
 })
 
 export class Table implements AfterViewInit {
-  
+
   @Inject("dataSource")
   dataSource: Turma[];
   displayedColumns: string[] = ['avatar', 'codigo', 'disciplina', 'professor', 'semestre', 'sala', 'edit', 'delete'];
-  
+
   ngAfterViewInit() {}
-  
+
 }

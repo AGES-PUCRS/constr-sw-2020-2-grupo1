@@ -1,1 +1,0 @@
-export { Turma } from './turma'

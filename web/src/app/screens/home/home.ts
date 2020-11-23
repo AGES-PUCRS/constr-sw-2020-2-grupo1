@@ -1,8 +1,9 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
-import { Turma } from 'src/app/interfaces';
+import { AfterViewInit, Component, Inject, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Turma } from 'src/app/types';
 import { MatSort } from '@angular/material/sort';
+import { TurmaService } from 'src/app/services/turmaService';
 
 /**
  * @title Table with pagination
@@ -15,19 +16,30 @@ import { MatSort } from '@angular/material/sort';
 
 export class Home implements AfterViewInit {
 
-  dataSource = new MatTableDataSource<Turma>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Turma>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
+  constructor(private turmaService: TurmaService) { }
+
+  ngOnInit() {
+    this.getClasses()
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
+  async getClasses() {
+    const classes = await this.turmaService.getAll()
+    this.dataSource = new MatTableDataSource(classes)
+  }
+
   public doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
-  
+
 }
 
 

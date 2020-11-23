@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     AppRoutingModule,
     MatPaginatorModule,
-    NoopAnimationsModule,
     MatTableModule,
     MatButtonModule,
     MatIconModule,
@@ -38,8 +38,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
+    NoopAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [Item]
+  bootstrap: [Home]
 })
 export class AppModule { }
