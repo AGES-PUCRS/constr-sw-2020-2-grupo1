@@ -5,35 +5,62 @@
     </div>
   </div>
 
-  <form  class="mat-elevation-z2 form" [formGroup]="loginForm" ngClick="onSubmit()">
+  <form  class="mat-elevation-z2 form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
 
       <mat-form-field>
         <mat-label>Código</mat-label>
         <input matInput placeholder="4T45-02" formControlName="codigo" required>
+        <mat-error *ngIf="profileForm.hasError('required')">
+          Preenchimento obrigatório
+        </mat-error>
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Disciplina</mat-label>
-        <input matInput placeholder="Construção de Software" formControlName="disciplina" required>
-      </mat-form-field>
+      <div class="doubleItem">
+        <mat-form-field>
+          <mat-label>Disciplina</mat-label>
+          <input matInput placeholder="Construção de Software" formControlName="disciplina" required>
+          <mat-error *ngIf="profileForm.hasError('required')">
+            Preenchimento obrigatório
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Professor</mat-label>
+          <input matInput placeholder="Eduardo Arruda" formControlName="professor" required>
+          <mat-error *ngIf="profileForm.hasError('required')">
+            Preenchimento obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-      <mat-form-field>
-        <mat-label>Professor</mat-label>
-        <input matInput placeholder="Eduardo Arruda" formControlName="professor" required>
-      </mat-form-field>
+      
 
       <mat-form-field>
         <mat-label>Semestre</mat-label>
         <input matInput placeholder="2020/2" formControlName="semestre" required>
+        <mat-error *ngIf="profileForm.hasError('required')">
+          Preenchimento obrigatório
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Sala</mat-label>
         <input  matInput placeholder="215" formControlName="sala" required>
+        <mat-error *ngIf="profileForm.hasError('required')">
+          Preenchimento obrigatório
+        </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit">Salvar</button>
+      
 
+      <div class="buttons">
+        <button class="cancel" mat-stroked-button color="primary" type="button">Cancel</button>
+        <button mat-raised-button class="save"  color="primary" type="submit">Salvar</button>
+      </div>
   </form >
+
+
+
+
 
 </div>
