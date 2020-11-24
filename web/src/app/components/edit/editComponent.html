@@ -52,6 +52,28 @@
             Preenchimento obrigatório
           </mat-error>
         </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label>Horários</mat-label>
+          <mat-chip-list #chipList aria-label="Seleção de Horários">
+            <mat-chip *ngFor="let horario of horarios" [selectable]="selectable"
+                     [removable]="removable" (removed)="remove(horario)">
+              {{horario}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="5LP"
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+          <mat-error *ngIf="form.hasError('required')">
+            Preenchimento obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        
+        
 
 
 

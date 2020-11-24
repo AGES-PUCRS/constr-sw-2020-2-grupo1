@@ -2,6 +2,12 @@ import {Component, Inject} from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { TurmaService } from 'src/app/services/turmaService';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
+
+export interface Horario {
+  name: string;
+}
 
 @Component({
   selector: 'editComponent',
@@ -12,16 +18,48 @@ import { TurmaService } from 'src/app/services/turmaService';
 export class EditComponent {
 
   form: FormGroup;
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  horarios: string[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {id: string},
     private fb: FormBuilder,
     private turmaService: TurmaService,
     private dialogRef: MatDialogRef<EditComponent>,
-    ){ 
-      if (data.id!='new') this.fetchInfo();
-      this.initForm();
+  ){ 
+    if (data.id!='new') this.fetchInfo();
+    this.initForm();
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value.toUpperCase();
+
+    if ((value || '').trim()) {
+      this.horarios.push(value.trim());
     }
+
+    if (input) {
+      input.value = '';
+    }
+
+    console.log(this.horarios)
+  }
+
+    remove(item: string): void {
+    const index = this.horarios.indexOf(item);
+
+    if (index >= 0) {
+      this.horarios.splice(index, 1);
+    }
+  }
+
+
 
 
     
@@ -49,6 +87,7 @@ export class EditComponent {
     this.form.patchValue({semestre: response.semestre})
     this.form.patchValue({ano: response.ano})
     this.form.patchValue({disciplina: response.disciplina})
+    this.horarios = response.horario
 
   }
 
@@ -65,10 +104,6 @@ export class EditComponent {
 
   async onSubmit() {
 
-    const horario =  [
-      "2LM",
-      "4NP"
-    ];
     const aulas =  [
       "2LM",
       "4NP"
@@ -85,19 +120,9 @@ export class EditComponent {
       "sala": `${this.form.value.sala}`,
       "professor": `${this.form.value.professor}`,
       "disciplina": `${this.form.value.disciplina}`,
-    
-      "horario": [
-        "2LM",
-        "4NP"
-      ],
-      "aulas": [
-        "id_aula1",
-        "id_aula2"
-      ],
-      "alunos": [
-        "id_aluno1",
-        "id_aluno2"
-      ]
+      "horario": this.horarios,
+      "aulas": aulas,
+      "alunos": alunos,
     }
     
 
