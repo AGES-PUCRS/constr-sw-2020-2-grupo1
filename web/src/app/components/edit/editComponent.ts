@@ -1,17 +1,15 @@
-import {AfterViewInit, Component, Inject} from '@angular/core';
-import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
+import {Component, Inject} from '@angular/core';
+import {FormGroup, FormBuilder} from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { TurmaService } from 'src/app/services/turmaService';
-import { MatTableDataSource } from '@angular/material/table';
-
 
 @Component({
-  selector: 'modalComponent',
-  templateUrl: './modalComponent.html',
-  styleUrls: ['./modalComponent.scss'],
+  selector: 'editComponent',
+  templateUrl: './editComponent.html',
+  styleUrls: ['./editComponent.scss'],
 })
 
-export class ModalComponent {
+export class EditComponent {
 
   form: FormGroup;
 
@@ -19,7 +17,7 @@ export class ModalComponent {
     @Inject(MAT_DIALOG_DATA) public data: {id: string},
     private fb: FormBuilder,
     private turmaService: TurmaService,
-    private dialogRef: MatDialogRef<ModalComponent>,
+    private dialogRef: MatDialogRef<EditComponent>,
     ){ 
       if (data.id!='new') this.fetchInfo();
       this.initForm();
@@ -45,7 +43,7 @@ export class ModalComponent {
 
   async fetchInfo() {
     const response = await this.turmaService.get(this.data.id)
-    this.form.patchValue({codigo: response.sala})
+    this.form.patchValue({codigo: response.numero})
     this.form.patchValue({professor: response.professor})
     this.form.patchValue({sala: response.sala})
     this.form.patchValue({semestre: response.semestre})
@@ -67,15 +65,27 @@ export class ModalComponent {
 
   async onSubmit() {
 
-    console.log(this.form.get('codigo'))
+    const horario =  [
+      "2LM",
+      "4NP"
+    ];
+    const aulas =  [
+      "2LM",
+      "4NP"
+    ];
+    const alunos =  [
+      "2LM",
+      "4NP"
+    ];
 
-    const data = await{
-      "numero": "3213" ,
-      "ano": 2015,
-      "semestre": 1,
-      "sala": "id_sala",
-      "professor": "id_professor",
-      "disciplina": "id_disciplina",
+    const data = {
+      "numero": `${this.form.value.codigo}` ,
+      "ano": `${this.form.value.ano}`,
+      "semestre": `${this.form.value.semestre}`,
+      "sala": `${this.form.value.sala}`,
+      "professor": `${this.form.value.professor}`,
+      "disciplina": `${this.form.value.disciplina}`,
+    
       "horario": [
         "2LM",
         "4NP"
@@ -89,36 +99,17 @@ export class ModalComponent {
         "id_aluno2"
       ]
     }
+    
 
-    await this.turmaService.patch(this.data.id, data);
-    console.log()
-
-
+    if (this.data.id != 'new') await this.turmaService.patch( this.data.id, data );
+    else await this.turmaService.post(data);
+    
     this.dialogRef.close();
   }
 
 }
 
 
-// {
-//   "numero": this.form.get('codigo').value ,
-//   "ano": this.form.get('ano').value,
-//   "semestre": this.form.get('semestre').value,
-//   "sala": this.form.get('sala').value,
-//   "professor": this.form.get('professor').value,
-//   "disciplina": this.form.get('codigo').value,
 
-//   "horario": [
-//     "2LM",
-//     "4NP"
-//   ],
-//   "aulas": [
-//     "id_aula1",
-//     "id_aula2"
-//   ],
-//   "alunos": [
-//     "id_aluno1",
-//     "id_aluno2"
-//   ]
-// }
+
 

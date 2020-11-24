@@ -1,15 +1,13 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Turma } from 'src/app/types';
-import { ModalComponent } from '../../components/modal/modalComponent';
+import { EditComponent } from '../../components/edit/editComponent';
+
 import { TurmaService } from 'src/app/services/turmaService';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
-
-/**
- * @title Table with pagination
- */
+ 
 @Component({
   selector: 'home',
   templateUrl: './home.html',
@@ -31,14 +29,14 @@ export class Home implements AfterViewInit {
 
   openNew() {
    
-    let dialogRef = this.dialog.open(ModalComponent, {
+    let dialogRef = this.dialog.open(EditComponent, {
       data: { 
         id: 'new', 
       },
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result) this.getClasses();
+      this.getClasses();
     });
   }
 
@@ -56,7 +54,7 @@ export class Home implements AfterViewInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  refresh(data: string) {
+  refresh() {
     this.getClasses()
     // window.location.reload();
   }

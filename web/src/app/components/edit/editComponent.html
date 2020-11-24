@@ -1,11 +1,11 @@
-<h2 mat-dialog-title>Detalhes da Turma</h2>
+<h2  class="title" mat-dialog-title>Detalhes da Turma</h2>
 <mat-dialog-content class="mat-typography">
     <form  [formGroup]="form" (ngSubmit)="onSubmit()">
   
         <mat-form-field>
           
           <mat-label>Código</mat-label>
-          <input matInput placeholder="4T45-02" formControlName="codigo" required>
+          <input matInput placeholder="4T45-02" type='number' formControlName="codigo" required>
           <mat-error *ngIf="form.hasError('required')">
             Preenchimento obrigatório
           </mat-error>
@@ -30,7 +30,7 @@
 
           <mat-form-field>
             <mat-label>Ano</mat-label>
-            <input matInput placeholder="2019" formControlName="ano" required>
+            <input matInput placeholder="2019" type='number' formControlName="ano" required>
             <mat-error *ngIf="form.hasError('required')">
               Preenchimento obrigatório
             </mat-error>
@@ -39,7 +39,7 @@
   
         <mat-form-field>
           <mat-label>Semestre</mat-label>
-          <input matInput placeholder="2020/2" formControlName="semestre" required>
+          <input matInput placeholder="2020/2" type='number' formControlName="semestre" required>
           <mat-error *ngIf="form.hasError('required')">
             Preenchimento obrigatório
           </mat-error>
@@ -67,5 +67,5 @@
 
 <mat-dialog-actions align="end">
   <button mat-button color="primary" mat-stroked-button mat-dialog-close>Cancelar</button>
-  <button mat-button color="primary" [disabled]="!form.valid" mat-raised-button (click)="onSubmit()" cdkFocusInitial>Salvar</button>
+  <button mat-button color="primary" [disabled]="!form.valid" mat-raised-button (click)="onSubmit()">Salvar</button>
 </mat-dialog-actions>

@@ -1,10 +1,11 @@
 import {AfterViewInit, Component, Inject} from '@angular/core';
 import { Turma } from 'src/app/types';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../modal/modalComponent';
+import { EditComponent }  from '../edit/editComponent';
+import { ItemComponent }  from '../item/itemComponent';
 import { TurmaService } from 'src/app/services/turmaService';
-import { Home } from 'src/app/screens/home/home';
 import { Output, EventEmitter } from '@angular/core';
+import { ConfirmComponent } from '../confirm/confirmComponent';
 
 
 @Component({
@@ -18,33 +19,58 @@ export class TableComponent implements AfterViewInit {
 
   @Inject("dataSource")
   dataSource: Turma[];
-  displayedColumns: string[] = ['avatar', 'codigo', 'disciplina', 'professor', 'semestre', 'sala', 'edit', 'delete'];
+  displayedColumns: string[] = ['codigo', 'disciplina', 'professor', 'semestre', 'sala', 'edit', 'delete', 'expand'];
 
   @Output() refresh = new EventEmitter<boolean>();
 
   ngAfterViewInit() {}
 
   constructor(
-    public dialog: MatDialog,
+    public editDialog: MatDialog,
+    public confirmDialog: MatDialog,
     private turmaService: TurmaService,
   ) { }
 
+  open(rowId: number) {
+    let dialogRef = this.editDialog.open(ItemComponent, {
+      data: { 
+        id: rowId, 
+      },
+      height: '35%',
+      width: '20%',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+
+  }
+  
+
   openEdit(rowId: number) {
    
-    let dialogRef = this.dialog.open(ModalComponent, {
+    let dialogRef = this.editDialog.open(EditComponent, {
       data: { 
         id: rowId, 
       },
     });
 
     dialogRef.afterClosed().subscribe(result => {
-
       this.refresh.emit();
     });
   }
 
-  async delete(rowId:number) {
-    await this.turmaService.delete(rowId)
+  confirm(rowId:number) {
+
+    let dialogRef = this.confirmDialog.open(ConfirmComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) this.delete(rowId)
+    });
+  }
+
+  async delete(id:number) {
+    await this.turmaService.delete(id)
     this.refresh.emit();
   }
   

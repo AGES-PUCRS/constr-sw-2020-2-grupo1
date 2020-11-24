@@ -43,5 +43,11 @@ export class TurmaService {
     return response;
 
   }
+  async post(turma): Promise<any> {
+    const response = await this.http.post(`${this.serviceUrl}turma/create`, turma, this.createHeader('application/json')).toPromise()
+    console.log(turma)
+    return response;
+
+  }
 }
 

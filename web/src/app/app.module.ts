@@ -5,7 +5,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { Home } from './screens/home/home';
 import { TableComponent } from './components/table/tableComponent';
-import { ModalComponent } from './components/modal/modalComponent';
+import { ItemComponent } from './components/item/itemComponent';
+import { EditComponent } from './components/edit/editComponent';
+import { ConfirmComponent } from './components/confirm/confirmComponent';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -24,8 +26,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     Home,
-    ModalComponent,
-    TableComponent
+    EditComponent,
+    TableComponent,
+    ConfirmComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
