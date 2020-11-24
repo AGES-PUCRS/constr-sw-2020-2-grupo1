@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {FormGroup, FormBuilder} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { TurmaService } from 'src/app/services/turmaService';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
@@ -16,8 +16,6 @@ export interface Horario {
 })
 
 export class EditComponent {
-
-  form: FormGroup;
   visible = true;
   selectable = true;
   removable = true;
@@ -25,17 +23,25 @@ export class EditComponent {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   horarios: string[] = [];
+  
+  item = new FormGroup({
+    codigo: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{3}$')]),
+    ano: new FormControl('', [Validators.required, Validators.pattern('^[12][0-9]{3}$')]),
+    semestre: new FormControl('', [Validators.required])
+  })
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {id: string},
-    private fb: FormBuilder,
     private turmaService: TurmaService,
     private dialogRef: MatDialogRef<EditComponent>,
   ){ 
     if (data.id!='new') this.fetchInfo();
-    this.initForm();
-  }
 
+  }
+  checkErrors() {
+    return true
+  }
+  
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value.toUpperCase();
@@ -47,11 +53,9 @@ export class EditComponent {
     if (input) {
       input.value = '';
     }
-
-    console.log(this.horarios)
   }
 
-    remove(item: string): void {
+  remove(item: string): void {
     const index = this.horarios.indexOf(item);
 
     if (index >= 0) {
@@ -60,47 +64,17 @@ export class EditComponent {
   }
 
 
-
-
-    
-    
-  initForm() {
-    this.form = this.fb.group({
-      codigo : '',
-      disciplina  : '',
-      professor : '',
-      semestre : '',
-      sala : '',
-      ano : '',
-    }, {
-      validator: this.validator,
-    })
-  }
-
-
-
   async fetchInfo() {
     const response = await this.turmaService.get(this.data.id)
-    this.form.patchValue({codigo: response.numero})
-    this.form.patchValue({professor: response.professor})
-    this.form.patchValue({sala: response.sala})
-    this.form.patchValue({semestre: response.semestre})
-    this.form.patchValue({ano: response.ano})
-    this.form.patchValue({disciplina: response.disciplina})
+
     this.horarios = response.horario
+    this.item.patchValue({
+      codigo: response.numero, 
+      ano: response.ano,
+      semestre: `${response.semestre}`,
+    })
 
   }
-
-  validator(form: FormGroup) {
-    const condition = form.get('semestre').value =='' ||
-    form.get('codigo').value =='' ||
-    form.get('disciplina').value ==''||
-    form.get('sala').value =='' ||
-    form.get('professor').value =='';
-
-    return condition ? { required: true} : null;
-  }
-
 
   async onSubmit() {
 
@@ -114,12 +88,12 @@ export class EditComponent {
     ];
 
     const data = {
-      "numero": `${this.form.value.codigo}` ,
-      "ano": `${this.form.value.ano}`,
-      "semestre": `${this.form.value.semestre}`,
-      "sala": `${this.form.value.sala}`,
-      "professor": `${this.form.value.professor}`,
-      "disciplina": `${this.form.value.disciplina}`,
+      "numero": `${this.item.value.codigo}` ,
+      "ano": `${this.item.value.ano}`,
+      "semestre": `${this.item.value.semestre}`,
+      "sala": `teste`,
+      "professor": `teste`,
+      "disciplina": `teste`,
       "horario": this.horarios,
       "aulas": aulas,
       "alunos": alunos,

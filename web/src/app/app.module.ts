@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
@@ -41,6 +42,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatPaginatorModule,
     MatTableModule,
     MatButtonModule,
+    MatRadioModule,
     MatIconModule,
     MatSortModule,
     MatListModule,
