@@ -13,4 +13,9 @@ export class DisciplinaService {
     const response = await this.http.get(`${this.serviceUrl}/disciplinas`).toPromise()
     return response
   }
+
+  async get(id): Promise<any> {
+    const response = await this.http.get(`${this.serviceUrl}/disciplinas/${id}`).toPromise()
+    return response;
+  }
 }

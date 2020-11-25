@@ -34,8 +34,6 @@ export class TableComponent implements AfterViewInit {
       data: { 
         id: rowId, 
       },
-      height: '35%',
-      width: '20%',
     });
 
     dialogRef.afterClosed().subscribe(result => {

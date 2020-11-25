@@ -29,7 +29,11 @@ export class TurmaService {
     return response;
 
   }
-  // ?expand=professor&expand=alunos&expand=aulas
+  async getExpanded(id): Promise<TurmaResponse> {
+    const response = await this.http.get<TurmaResponse>(`${this.serviceUrl}turma/${id}?expand=alunos&expand=aulas&expand=professor`).toPromise()
+    return response;
+  }
+  // 
 
   async delete(id): Promise<any> {
     const response = await this.http.delete(`${this.serviceUrl}turma/delete/${id}`, this.createHeader('application/json')).toPromise()

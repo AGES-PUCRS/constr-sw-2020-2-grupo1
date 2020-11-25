@@ -1,20 +1,54 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  width: 300pt;
+  height: 100%;
+  margin-left: 10pt;
+  margin-right: 10pt;
+}
+.little {
+  width: 200pt;
+}
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20pt;
+  padding-bottom: 20pt;
+}
+
 .title {
   font-size: 20pt;
 }
-
-.value {
-  margin-left: 5pt;
-  font-size: 14pt;
-  font-weight: 500;
-  color: #000000;
-}
-
-.description {
+.subtitle {
   font-size: 15pt;
   color: #1d8bf1;
+  margin-bottom: 0pt;
+}
+.lista {
+  padding-top: 5pt;
+  padding-bottom: 10pt;
 }
 
-.item {
-  display: flex;
-  flex-direction: row;
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 50pt;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 50pt;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1d8bf1;
+  border-radius: 50pt;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1976d2;
+  border-radius: 50pt;
 }

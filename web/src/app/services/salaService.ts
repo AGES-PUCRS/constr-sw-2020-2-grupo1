@@ -13,4 +13,10 @@ export class SalaService {
     const response = await this.http.get(`${this.serviceUrl}/room`).toPromise()
     return response
   }
+
+  async get(id): Promise<any> {
+    const response = await this.http.get(`${this.serviceUrl}/room/${id}`).toPromise()
+    return response;
+  }
+
 }

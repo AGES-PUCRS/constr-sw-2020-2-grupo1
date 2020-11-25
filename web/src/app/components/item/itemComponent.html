@@ -1,34 +1,53 @@
-<h2 class="title" mat-dialog-title>Turma</h2>
-<mat-dialog-content class="mat-typography" >
-  <div class='list'>
-      <div class='item'>
-        <p class ="description">Código</p>
-        <p class ="value">{{turma.numero}}</p>
-      </div>
-      <div class='item'>
-        <p class ="description">Professor</p>
-        <p class ="value">{{turma.professor}}</p>
-      </div>
-      <div class='item'>
-        <p class ="description">Sala</p>
-        <p class ="value">{{turma.sala}}</p>
-      </div>
-      <div class='item'>
-        <p class ="description">Semestre</p>
-        <p class ="value">{{turma.semestre}}</p>
-      </div>
-      <div class='item'>
-        <p class ="description">Ano</p>
-        <p class ="value">{{turma.ano}}</p>
-      </div>
-      <div class='item'>
-        <p class ="description">Disciplina</p>
-        <p class ="value">{{turma.disciplina}}</p>
-      </div>
-  </div>
-  
+<h2 class="title" mat-dialog-title>Detalhes da Turma</h2>
+<mat-dialog-content class="mat-typography">
+  <form class='content' [formGroup]="item">
+    <div class='section'>
+
+      <h2 class="subtitle">Código</h2>
+      <h2>{{turma.numero}}</h2>
+
+      <h2 class="subtitle">Ano e Semestre</h2>
+      <h2>{{turma.ano}}/{{turma.semestre}}</h2>
+
+      <h2 class="subtitle">Horários</h2>
+      <mat-chip-list #chipList aria-label="Seleção de Horários" class="lista">
+        <mat-chip *ngFor="let horario of turma.horario">
+          {{horario}}
+        </mat-chip>
+      </mat-chip-list>
+
+
+      <h2 class="subtitle">Professor</h2>
+      <h2>{{turma.professor.nome}}</h2>
+
+      <h2 class="subtitle">Sala</h2>
+      <h2>{{sala.number}}</h2>
+
+      <h2 class="subtitle">Disciplina</h2>
+      <h2>{{disciplina.nome}}</h2>
+
+    </div>
+
+    <div class='section little'>
+      <h2 class="subtitle">Alunos</h2>
+      <mat-list>
+        <h2 *ngFor="let aluno of turma.alunos">{{aluno.name}}</h2>
+      </mat-list>
+    </div>
+
+    <div class='section little'>
+      <h2 class="subtitle">Aulas</h2>
+
+      <mat-list>
+        <h2 *ngFor="let aula of turma.aulas">{{aula.data.description}}</h2>
+      </mat-list>
+
+    </div>
+
+  </form>
+
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-button color="primary" mat-stroked-button [mat-dialog-close]='true'>Fechar</button>
+  <button mat-button color="primary" mat-raised-button mat-dialog-close>Fechar</button>
 </mat-dialog-actions>
