@@ -39,13 +39,11 @@ export class TurmaService {
   }
   async patch(id, turma): Promise<any> {
     const response = await this.http.patch(`${this.serviceUrl}turma/patch/${id}`, turma, this.createHeader('application/json')).toPromise()
-    console.log(turma)
     return response;
 
   }
   async post(turma): Promise<any> {
     const response = await this.http.post(`${this.serviceUrl}turma/create`, turma, this.createHeader('application/json')).toPromise()
-    console.log(turma)
     return response;
 
   }

@@ -1,7 +1,18 @@
-.form {
+.section {
   display: flex;
   flex-direction: column;
   width: 300pt;
+  height: 100%;
+  margin-left: 10pt;
+  margin-right: 10pt;
+}
+.little {
+  width: 200pt;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   padding-top: 20pt;
   padding-bottom: 20pt;
 }
@@ -20,4 +31,28 @@
 .mat-radio-button ~ .mat-radio-button {
   padding-top: 5pt;
   margin-left: 16px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 50pt;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 50pt;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1d8bf1;
+  border-radius: 50pt;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1976d2;
+  border-radius: 50pt;
 }

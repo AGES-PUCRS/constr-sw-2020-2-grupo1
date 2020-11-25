@@ -1,59 +1,102 @@
 <h2 class="title" mat-dialog-title>Detalhes da Turma</h2>
 <mat-dialog-content class="mat-typography">
-  <form class='form' [formGroup]="item">
+  <form class='content' [formGroup]="item">
+    <div class='section'>
 
-    <mat-form-field>
-      <mat-label>Insira o código da turma</mat-label>
-      <input matInput placeholder="128" autocomplete="false" name="hidden" type='number' formControlName="codigo"
-        required>
-      <mat-error>Código inválido, insira um código de <strong>3</strong> digitos</mat-error>
-    </mat-form-field>
+      <mat-form-field>
+        <mat-label>Insira o código da turma</mat-label>
+        <input matInput placeholder="128" autocomplete="false" name="hidden" type='number' formControlName="codigo"
+          required>
+        <mat-error>Código inválido, insira um código de <strong>3</strong> digitos</mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Insira o ano da turma</mat-label>
-      <input matInput placeholder="2020" autocomplete="false" name="hidden" type='number' formControlName="ano"
-        required>
-      <mat-error>Ano inválido</mat-error>
-    </mat-form-field>
+      <mat-form-field>
+        <mat-label>Insira o ano da turma</mat-label>
+        <input matInput placeholder="2020" autocomplete="false" name="hidden" type='number' formControlName="ano"
+          required>
+        <mat-error>Ano inválido</mat-error>
+      </mat-form-field>
 
-    <div class="row">
-      <mat-radio-group formControlName="semestre">
-        <mat-radio-button value=1>Semestre 1</mat-radio-button>
-        <mat-radio-button value=2>Semestre 2</mat-radio-button>
-      </mat-radio-group>
+      <div class="row">
+        <mat-radio-group formControlName="semestre" color="primary">
+          <mat-radio-button value=1>Semestre 1</mat-radio-button>
+          <mat-radio-button value=2>Semestre 2</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Horários</mat-label>
+        <mat-chip-list #chipList aria-label="Adição de Horários">
+          <input placeholder="5LP" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+        <mat-hint align="start">Insira <strong>enter </strong>ou <strong>vírgula</strong> para adicionar </mat-hint>
+      </mat-form-field>
+
+      <mat-chip-list #chipList aria-label="Seleção de Horários" class="lista">
+        <mat-chip *ngFor="let horario of horarios" [selectable]="selectable" [removable]="removable"
+          (removed)="remove(horario)">
+          {{horario}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+
+
+
+
+      <mat-form-field>
+        <mat-label *ngIf="professores.length>0">Professor</mat-label>
+        <mat-label *ngIf="professores.length==0">Erro ao buscar professores</mat-label>
+        <mat-select formControlName="professor">
+          <mat-option value="{{professor.id}}" *ngFor="let professor of professores">{{professor.nome}}</mat-option>
+        </mat-select>
+        <mat-error>Professor inválido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label *ngIf="salas.length>0">Salas</mat-label>
+        <mat-label *ngIf="salas.length==0">Erro ao buscar salas</mat-label>
+        <mat-select formControlName="sala">
+          <mat-option value="{{sala._id}}" *ngFor="let sala of salas">{{sala.number}}</mat-option>
+        </mat-select>
+        <mat-error>Sala inválida</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label *ngIf="disciplinas.length>0">Disciplina</mat-label>
+        <mat-label *ngIf="disciplinas.length==0">Erro ao buscar disciplinas</mat-label>
+        <mat-select formControlName="disciplina">
+          <mat-option value="{{disciplina.id}}" *ngFor="let disciplina of disciplinas">{{disciplina.nome}}</mat-option>
+        </mat-select>
+        <mat-error>Disciplina inválida</mat-error>
+      </mat-form-field>
+
     </div>
 
+    <div class='section little'>
+      <mat-label>Alunos</mat-label>
+      <mat-label *ngIf="alunos.length==0">Erro ao buscar alunos</mat-label>
+      <mat-selection-list color="primary" formControlName="alunos">
+        <mat-list-option *ngFor="let aluno of alunos" [value]="aluno._id">
+          {{aluno.name}}
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
 
+    <div class='section little'>
+      <mat-label>Aulas</mat-label>
 
+      <mat-label *ngIf="aulas.length==0">Erro ao buscar aulas</mat-label>
+      <mat-selection-list color="primary" formControlName="aulas">
+        <mat-list-option *ngFor="let aula of aulas" [value]="aula._id">
+          {{aula.description}}
+        </mat-list-option>
+      </mat-selection-list>
 
+    </div>
 
-    <mat-form-field>
-      <mat-label>Horários</mat-label>
-      <mat-chip-list #chipList aria-label="Adição de Horários">
-        <input placeholder="5LP" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-          [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
-      </mat-chip-list>
-      <mat-hint align="start">Insira <strong>enter </strong>ou <strong>vírgula</strong> para adicionar </mat-hint>
-    </mat-form-field>
-
-    <mat-chip-list #chipList aria-label="Seleção de Horários" class="lista">
-      <mat-chip *ngFor="let horario of horarios" [selectable]="selectable" [removable]="removable" (removed)="remove(horario)">
-        {{horario}}
-      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-      </mat-chip>
-    </mat-chip-list>
-
-
-
-
-    <mat-form-field >
-      <mat-label>Professor</mat-label>
-      <mat-select formControlName="professor" required >
-        <mat-option value="{{professor.id}}" *ngFor="let professor of professores">{{professor.nome}}</mat-option>
-      </mat-select>
-      <mat-error>Professor inválido</mat-error>
-    </mat-form-field>
   </form>
+
 
 
 

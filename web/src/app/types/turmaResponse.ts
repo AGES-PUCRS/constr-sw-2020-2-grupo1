@@ -1,6 +1,6 @@
 export interface TurmaResponse {
-  horario: any[]
-  alunos: any[]
+  horario: any
+  alunos: any
   _id: any
   numero: any
   ano: any
@@ -8,4 +8,5 @@ export interface TurmaResponse {
   sala: any
   disciplina: any
   professor: any
+  aulas: any
 }
