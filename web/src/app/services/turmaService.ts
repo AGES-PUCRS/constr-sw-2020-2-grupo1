@@ -16,7 +16,7 @@ export class TurmaService {
   constructor(private http: HttpClient) { }
 
   async getAll(): Promise<Turma[]> {
-    const classes = await this.http.get<TurmaResponse[]>(`${this.serviceUrl}turma/`).toPromise()
+    const classes = await this.http.get<TurmaResponse[]>(`${this.serviceUrl}turma?expand=professor&expand=aulas&expand=alunos&expand=sala`).toPromise()
     return classes.map((turma: TurmaResponse) => 
     {
       return new Turma(turma.numero, turma.disciplina, turma.professor, (turma.ano+'/'+turma.semestre), turma.sala, turma._id)
@@ -30,7 +30,7 @@ export class TurmaService {
 
   }
   async getExpanded(id): Promise<TurmaResponse> {
-    const response = await this.http.get<TurmaResponse>(`${this.serviceUrl}turma/${id}?expand=alunos&expand=aulas&expand=professor`).toPromise()
+    const response = await this.http.get<TurmaResponse>(`${this.serviceUrl}turma/${id}?expand=alunos&expand=aulas&expand=professor&expand=sala`).toPromise()
     return response;
   }
   // 
