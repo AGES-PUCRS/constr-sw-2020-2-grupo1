@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Turma } from 'src/app/types';
 import { EditComponent } from '../../components/edit/editComponent';
-
 import { TurmaService } from 'src/app/services/turmaService';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -36,18 +35,19 @@ export class Home implements AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getClasses();
+      this.fetchData();
     });
   }
 
   ngAfterViewInit() {
-    this.getClasses()
+    this.fetchData()
   }
 
-  async getClasses() {
+  async fetchData() {
     const classes = await this.turmaService.getAll()
     this.dataSource = new MatTableDataSource(classes)
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   public doFilter = (value: string) => {
@@ -55,7 +55,7 @@ export class Home implements AfterViewInit {
   }
 
   refresh() {
-    this.getClasses()
+    this.fetchData()
     // window.location.reload();
   }
 

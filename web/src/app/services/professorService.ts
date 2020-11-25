@@ -18,6 +18,5 @@ export class ProfessorService {
   async get(id): Promise<Professor> {
     const response = await this.http.get<Professor>(`http://ec2-3-91-232-225.compute-1.amazonaws.com:3333/professores/` + id).toPromise()
     return response;
-
   }
 }

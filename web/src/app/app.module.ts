@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { MatChipsModule } from '@angular/material/chips';
     BrowserModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatSelectModule,
     AppRoutingModule,
     MatChipsModule,
     MatPaginatorModule,

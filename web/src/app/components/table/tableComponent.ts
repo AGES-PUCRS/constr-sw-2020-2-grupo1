@@ -6,8 +6,6 @@ import { ItemComponent }  from '../item/itemComponent';
 import { TurmaService } from 'src/app/services/turmaService';
 import { Output, EventEmitter } from '@angular/core';
 import { ConfirmComponent } from '../confirm/confirmComponent';
-
-
 @Component({
   selector: 'tableComponent',
   templateUrl: './tableComponent.html',
@@ -60,11 +58,8 @@ export class TableComponent implements AfterViewInit {
   }
 
   confirm(rowId:number) {
-
     let dialogRef = this.confirmDialog.open(ConfirmComponent);
-
     dialogRef.afterClosed().subscribe(result => {
-
       if (result) this.delete(rowId)
     });
   }
