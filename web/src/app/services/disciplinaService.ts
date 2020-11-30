@@ -10,12 +10,7 @@ export class DisciplinaService {
   constructor(private http: HttpClient) { }
 
   async getAll(): Promise<any> {
-    const response = await this.http.get(`${this.serviceUrl}/disciplinas`).toPromise()
+    const response = await this.http.get(`${this.serviceUrl}/disciplinas`).toPromise().catch(() => {return []})
     return response
-  }
-
-  async get(id): Promise<any> {
-    const response = await this.http.get(`${this.serviceUrl}/disciplinas/${id}`).toPromise()
-    return response;
   }
 }

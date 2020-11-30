@@ -10,7 +10,7 @@ export class ProfessorService {
   constructor(private http: HttpClient) { }
 
   async getAll(): Promise<any> {
-    const classes = await this.http.get(`${this.serviceUrl}professores/`).toPromise()
+    const classes = await this.http.get(`${this.serviceUrl}professores/`).toPromise().catch(() => {return []})
     return classes
   }
 }

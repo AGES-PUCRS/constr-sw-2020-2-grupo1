@@ -1,6 +1,6 @@
 <h2 class="title" mat-dialog-title>Detalhes da Turma</h2>
 <mat-dialog-content class="mat-typography">
-  <form class='content' [formGroup]="item">
+  <div class='content'>
     <div class='section'>
 
       <h2 class="subtitle">Código</h2>
@@ -30,7 +30,7 @@
 
     <div class='section little'>
       <h2 class="subtitle">Alunos</h2>
-      <mat-list>
+      <mat-list >
         <h2 *ngFor="let aluno of turma.alunos">{{aluno.name}}</h2>
       </mat-list>
     </div>
@@ -38,13 +38,14 @@
     <div class='section little'>
       <h2 class="subtitle">Aulas</h2>
 
-      <mat-list>
+      <h2>Erro na chamada de Turmas</h2>
+       <mat-list >
         <h2 *ngFor="let aula of turma.aulas">{{aula.data.description}}</h2>
-      </mat-list>
+      </mat-list> 
 
     </div>
 
-  </form>
+  </div>
 
 </mat-dialog-content>
 

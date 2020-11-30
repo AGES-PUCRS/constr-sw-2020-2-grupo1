@@ -90,13 +90,11 @@ export class EditComponent {
   }
 
   async fetchGeneralInformation() {
-    this.professores = await this.professorService.getAll().catch(() => {alert('Erro na chamada das professores')}) || [];;
-    this.salas = await this.salaService.getAll().catch(() => {alert('Erro na chamada das salas')}) || [];;
-    
-    this.alunos = await this.alunoService.getAll().catch(() => {alert('Erro na chamada das alunos')} ) || [];;
-    
-    const aulas = await this.aulaService.getAll().catch(() => {alert('Erro na chamada das aulas')}) || [];;
-    this.aulas = aulas.data    
+    this.professores = await this.professorService.getAll()
+    this.salas = await this.salaService.getAll()
+    this.alunos = await this.alunoService.getAll()
+    const aulas = await this.aulaService.getAll()
+    this.aulas = aulas.data || []    
     
     // this.disciplinas = await this.disciplinaService.getAll().catch(() => {alert('Erro na chamada das disciplinas')}) || [];
   }

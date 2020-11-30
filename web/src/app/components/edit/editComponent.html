@@ -76,7 +76,7 @@
     <div class='section little'>
       <mat-label>Alunos</mat-label>
       <mat-label *ngIf="alunos.length==0">Erro ao buscar alunos</mat-label>
-      <mat-selection-list color="primary" formControlName="alunos">
+      <mat-selection-list *ngIf="alunos.length!=0" color="primary" formControlName="alunos">
         <mat-list-option *ngFor="let aluno of alunos" [value]="aluno._id">
           {{aluno.name}}
         </mat-list-option>
@@ -87,7 +87,7 @@
       <mat-label>Aulas</mat-label>
 
       <mat-label *ngIf="aulas.length==0">Erro ao buscar aulas</mat-label>
-      <mat-selection-list color="primary" formControlName="aulas">
+      <mat-selection-list *ngIf="aulas.length!=0" color="primary" formControlName="aulas">
         <mat-list-option *ngFor="let aula of aulas" [value]="aula._id">
           {{aula.description}}
         </mat-list-option>

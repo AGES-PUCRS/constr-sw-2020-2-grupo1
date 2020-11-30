@@ -10,7 +10,7 @@ export class AlunoService {
   constructor(private http: HttpClient) { }
 
   async getAll(): Promise<any> {
-    const response = await this.http.get(`${this.serviceUrl}/alunos`).toPromise()
+    const response = await this.http.get(`${this.serviceUrl}/alunos`).toPromise().catch(() => {return []})
     return response
   }
 }

@@ -10,13 +10,8 @@ export class SalaService {
   constructor(private http: HttpClient) { }
 
   async getAll(): Promise<any> {
-    const response = await this.http.get(`${this.serviceUrl}/room`).toPromise()
+    const response = await this.http.get(`${this.serviceUrl}/room`).toPromise().catch(() => {return []})
     return response
-  }
-
-  async get(id): Promise<any> {
-    const response = await this.http.get(`${this.serviceUrl}/room/${id}`).toPromise()
-    return response;
   }
 
 }

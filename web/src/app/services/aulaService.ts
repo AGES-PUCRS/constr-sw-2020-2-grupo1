@@ -10,7 +10,7 @@ export class AulaService {
   constructor(private http: HttpClient) { }
 
   async getAll(): Promise<any> {
-    const response = await this.http.get(`${this.serviceUrl}/classes`).toPromise()
+    const response = await this.http.get(`${this.serviceUrl}/classes`).toPromise().catch(() => {return []})
     return response
   }
 }

@@ -12,6 +12,7 @@ import { TurmaService } from 'src/app/services/turmaService';
 export class ItemComponent {
   
   turma: any;
+  disciplina: any = {nome:'Erro na chamada'};
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {id: string},
     private turmaService: TurmaService,
@@ -19,11 +20,11 @@ export class ItemComponent {
     ){ 
       this.fetchGeneralInformation()
     }
-    disciplina: any = {nome:'Erro na chamada'};
 
   async fetchGeneralInformation() {
 
-    this.turma = await this.turmaService.getExpanded(this.data.id).catch(() => {alert('Erro na chamada da turma')});
+    this.turma = await this.turmaService.getExpanded(this.data.id)
+
     
     // this.disciplina = await this.disciplinaService.get(this.turma.disciplina).catch(() => {alert('Erro na chamada da disciplina')}) || {nome:'Erro na chamada'};
   }
