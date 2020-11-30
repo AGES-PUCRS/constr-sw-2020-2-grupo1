@@ -6,7 +6,7 @@ export default class TurmaService {
     turmaApi: AxiosInstance
 
     constructor() {
-        const serviceUrl = "http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/"
+        const serviceUrl = "http://ec2-34-238-241-74.compute-1.amazonaws.com:3000/"
 
         const axiosConfig: AxiosRequestConfig = { baseURL: serviceUrl }
         this.turmaApi = Axios.create(axiosConfig)
