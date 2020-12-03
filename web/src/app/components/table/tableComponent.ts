@@ -56,7 +56,14 @@ export class TableComponent implements AfterViewInit {
   }
 
   confirm(rowId:number) {
-    let dialogRef = this.confirmDialog.open(ConfirmComponent);
+    let dialogRef = this.confirmDialog.open(ConfirmComponent, {
+      data: {
+        title: "Excluir Turma",
+        description: "Deseja mesmo excluir esta turma? Essa ação não pode ser desfeita",
+        button1: "Cancelar",
+        button2: "Excluir"
+      }
+    });
     dialogRef.afterClosed().subscribe(result => {
       if (result) this.delete(rowId)
     });

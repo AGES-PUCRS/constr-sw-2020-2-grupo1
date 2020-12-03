@@ -1,11 +1,8 @@
-<h2 class="title" mat-dialog-title>Excluir Turma</h2>
+<h2 class="title" mat-dialog-title>{{title}}</h2>
 <mat-dialog-content class="mat-typography">
-  <h2 class="description">Deseja mesmo excluir esta turma? Essa ação não pode ser desfeita</h2>
-   
-  
+  <h2 class="description">{{description}}</h2>
 </mat-dialog-content>
-
 <mat-dialog-actions align="end">
-  <button mat-button color="primary" mat-stroked-button [mat-dialog-close]="false">Cancelar</button>
-  <button mat-button color="warn" [mat-dialog-close]="true" mat-raised-button>Excluir</button>
+  <button mat-button color="primary" mat-stroked-button [mat-dialog-close]="false">{{button1}}</button>
+  <button mat-button color="warn" [mat-dialog-close]="true" mat-raised-button>{{button2}}</button>
 </mat-dialog-actions>
