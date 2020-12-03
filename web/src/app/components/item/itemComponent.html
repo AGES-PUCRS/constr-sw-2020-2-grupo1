@@ -21,7 +21,7 @@
       <h2>{{turma.professor.nome}}</h2>
 
       <h2 class="subtitle">Sala</h2>
-      <h2>{{turma.sala.number}}</h2>
+      <h2>{{turma.sala}}</h2>
 
       <h2 class="subtitle">Disciplina</h2>
       <h2>{{disciplina.nome}}</h2>
@@ -38,7 +38,7 @@
     <div class='section little'>
       <h2 class="subtitle">Aulas</h2>
 
-      <h2>Erro na chamada de Turmas</h2>
+      
        <mat-list >
         <h2 *ngFor="let aula of turma.aulas">{{aula.data.description}}</h2>
       </mat-list> 

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core'
   providedIn: "root",
 })
 export class ProfessorService {
-  private readonly serviceUrl = "http://ec2-3-91-232-225.compute-1.amazonaws.com:3333/"
+  private readonly serviceUrl = "http://3.231.200.235:3333/"
 
   constructor(private http: HttpClient) { }
 

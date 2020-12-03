@@ -23,8 +23,10 @@ export class ItemComponent {
 
   async fetchGeneralInformation() {
 
+    
     this.turma = await this.turmaService.getExpanded(this.data.id)
-
+    
+    console.log(this.turma)
     
     // this.disciplina = await this.disciplinaService.get(this.turma.disciplina).catch(() => {alert('Erro na chamada da disciplina')}) || {nome:'Erro na chamada'};
   }

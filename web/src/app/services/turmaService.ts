@@ -7,7 +7,7 @@ import { Turma, TurmaResponse } from '../types'
   providedIn: "root",
 })
 export class TurmaService {
-  private readonly serviceUrl = "http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/"
+  private readonly serviceUrl = "http://ec2-34-238-241-74.compute-1.amazonaws.com:3000/"
 
   private createHeader(contentType: string): any {
     return { headers: new HttpHeaders({ 'Content-Type': contentType }), responseType: 'text' };
@@ -16,8 +16,8 @@ export class TurmaService {
   constructor(private http: HttpClient) { }
 
   async getAll(): Promise<Turma[]> {
-    // const classes = await this.http.get<TurmaResponse[]>(`${this.serviceUrl}turma?expand=professor&expand=aulas&expand=alunos&expand=sala&expand=disciplinas`).toPromise().catch(() => {alert('Erro na chamada de algum dos dados das turmas')}) || []
-    const classes = await this.http.get<TurmaResponse[]>(`${this.serviceUrl}turma?expand=professor&expand=alunos&expand=sala`).toPromise().catch(() => {alert('Erro na chamada de algum dos dados das turmas')}) || []
+    // const classes = await this.http.get<TurmaResponse[]>(`${this.serviceUrl}turma?expand=professor&expand=sala&expand=disciplinas`).toPromise().catch(() => {alert('Erro na chamada de algum dos dados das turmas')}) || []
+    const classes = await this.http.get<TurmaResponse[]>(`${this.serviceUrl}turma?expand=professor`).toPromise().catch(() => {alert('Erro na chamada de algum dos dados das turmas')}) || []
     return classes.map((turma: TurmaResponse) => 
     {
       return new Turma(turma.numero, turma.disciplina, turma.professor, (turma.ano+'/'+turma.semestre), turma.sala, turma._id)
@@ -32,7 +32,7 @@ export class TurmaService {
   }
   async getExpanded(id): Promise<TurmaResponse> {
     // const response = await this.http.get<TurmaResponse>(`${this.serviceUrl}turma/${id}?expand=alunos&expand=aulas&expand=professor&expand=sala&expand=disciplinas`).toPromise() 
-    const response = await this.http.get<TurmaResponse>(`${this.serviceUrl}turma/${id}?expand=alunos&expand=professor&expand=sala`).toPromise() 
+    const response = await this.http.get<TurmaResponse>(`${this.serviceUrl}turma/${id}?expand=alunos&expand=professor&expand=aulas`).toPromise() 
     return response;
   } 
 
